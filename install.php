@@ -209,20 +209,17 @@
 			break;
 		default:
 			$mfhclass->templ->html = "\t\t\t<h1>Welcome to NasuTek Multi Forum Host</h1><br />
-			<p>Welcome to NasuTek Multi Forum Host. <i>NasuTek, Inc.</i>, the developer of NasuTek Multi Forum Host has 
-			been a leader in image hosting technology since 2006. In order to improve our services and allow our 
-			users more options, <i>NasuTek, Inc.</i> is switching to larger hosting opportunities. NasuTek Multi 
-			Forum Host is the only phpBB3 hosting script to be open source, <b>free</b>, and easy to use. It gives 
-			you the power to host hundreds of phpBB powered forums with only a tiny bit of resources needed. 
-			<br /><br />
-			This NasuTek Multi Forum Host version is packaged with: <b>phpBB {$mfhclass->info->phpbb_version}</b>.
+			<p>Welcome to NasuTek Multi Forum Host. NasuTek Multi Forum Host is the only phpBB3 hosting script 
+			to be open source, <b>free</b>, and easy to use. It gives you the power to host hundreds of phpBB 
+			powered forums with only a tiny bit of resources needed. 
 			<br /><br />
 			You will need to have the following to allow NasuTek Multi Forum Host to operate:
 			<br /><br />
 			&nbsp;&nbsp;1. <a href=\"http://httpd.apache.org/\" target=\"_blank\">Apache Web Server</a><br />
 			&nbsp;&nbsp;&nbsp;2. <a href=\"http://www.mysql.com/\" target=\"_blank\">MySQL Database Server</a><br />
 			&nbsp;&nbsp;&nbsp;&nbsp;3. <a href=\"http://www.php.net/\" target=\"_blan\">PHP: Hypertext Preprocessor</a><br />
-			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. <a href=\"http://httpd.apache.org/docs/2.0/mod/mod_rewrite.html\" target=\"_blank\">Apache mod_rewrite Module</a></li>
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;4. <a href=\"http://httpd.apache.org/docs/2.0/mod/mod_rewrite.html\" target=\"_blank\">Apache mod_rewrite Module</a><br />
+			&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;5. <a href=\"http://phpbb.org\" target=\"_blank\">phpBB version 3.0.5</a></li>
 			<br /><br />
 			<b>Warning:</b> Using this installer will erase any already existing NasuTek Multi Forum Host installation. 
 			<br /><br />

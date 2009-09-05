@@ -13,7 +13,7 @@
 
 	$mfhclass = new stdClass;
 
-	ini_set("display_errors"  , 0); 
+	ini_set("display_errors"  , 1); 
 	ini_set("register_globals", 0);
 	ini_set("memory_limit"    , -1);
 	//ini_set("post_max_size" , -1);

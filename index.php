@@ -75,7 +75,7 @@
 		case "signup-p":
 			$mfhclass->templ->page_title = "{$mfhclass->info->config['site_name']} &raquo; Singup &raquo; Singup Complete";
 			$mfhclass->input->post_vars['access_name'] = preg_replace("/-/", "_", strtolower($mfhclass->input->post_vars['access_name']));
-			require_once "{$mfhclass->info->root_path}phpBB3/includes/install/install_queries.php";
+
 			if ($mfhclass->input->post_vars['iagree'] == NULL || $mfhclass->input->post_vars['access_name'] == NULL || $mfhclass->input->post_vars['username'] == NULL || $mfhclass->input->post_vars['password'] == NULL || $mfhclass->input->post_vars['password-c'] == NULL || $mfhclass->input->post_vars['email_address'] == NULL || $mfhclass->input->post_vars['forum_category'] == NULL) {
 				$mfhclass->templ->error("Please ensure that all required fields of the singup form has been filled in.");
 			} elseif (!$mfhclass->funcs->valid_email($mfhclass->input->post_vars['email_address'])) {
@@ -101,9 +101,32 @@
 				
 				$mfhclass->db->query("INSERT INTO `mfh_hosted_forums` (`database_id`, `access_name`, `time_started`, `total_hits`, `category_id`, `ip_address`, `email_address`) VALUES ('{$database_info['database_id']}', '{$mfhclass->input->post_vars['access_name']}', ".time().", 1, {$mfhclass->input->post_vars['forum_category']}, '{$mfhclass->input->server_vars['ip_address']}', '{$mfhclass->input->post_vars['email_address']}');");
 
-				for ($i = 0; $i < count($mfhclass->db->install_queries); $i++) {
-					$mfhclass->db->query($mfhclass->db->install_queries[$i], $database_info['database_id']);
-				}
+				$replacevalues = array(	"DBNAME" => $mfhclass->input->post_vars['access_name'],
+							"EMAIL" => $mfhclass->input->post_vars['email_address'],
+							"SERVER_NAME" => $mfhclass->info->site_url,
+							"SERVER_PROTOCOL" => "http://",
+							"SITE_NAME" => $mfhclass->input->post_vars['forum_name'],
+							"UPLOAD_PATH" => $mfhclass->input->post_vars['access_name'],
+							"USERNAME" => $mfhclass->input->post_vars['username'],
+							"USERNAME_MINI" => $mfhclass->input->post_vars['username'],
+							"PASSWORD" => md5($mfhclass->input->post_vars['password']));
+
+				$myFile = "{$mfhclass->info->root_path}/sql/phpbb-{$mfhclass->info->phpbb_version}";
+				$fh = fopen($myFile, 'r');
+				$sqlscript = fread($fh, filesize($myFile));
+				fclose($fh);
+
+				$sqlscript = str_replace("##DBNAME##", $replacevalues["DBNAME"], $sqlscript);
+				$sqlscript = str_replace("##EMAIL##", $replacevalues["EMAIL"], $sqlscript);
+				$sqlscript = str_replace("##SERVER_NAME##", $replacevalues["SERVER_NAME"], $sqlscript);
+				$sqlscript = str_replace("##SERVER_PROTOCOL##", $replacevalues["SERVER_PROTOCOL"], $sqlscript);
+				$sqlscript = str_replace("##SITE_NAME##", $replacevalues["SITE_NAME"], $sqlscript);
+				$sqlscript = str_replace("##UPLOAD_PATH##", $replacevalues["UPLOAD_PATH"], $sqlscript);
+				$sqlscript = str_replace("##USERNAME##", $replacevalues["USERNAME"], $sqlscript);
+				$sqlscript = str_replace("##USERNAME_MINI##", $replacevalues["USERNAME_MINI"], $sqlscript);
+				$sqlscript = str_replace("##PASSWORD##", $replacevalues["PASSWORD"], $sqlscript);
+
+				$mfhclass->db->query($sqlscript, $database_info['database_id']);
 
 				$mfhclass->templ->html = "<h1>Forum Created</h1><br />
 				<p>Congratulations, your new forum has been successfully created. Below are some details related to 
