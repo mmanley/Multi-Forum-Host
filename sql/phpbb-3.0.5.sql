@@ -4,29 +4,6 @@
 -- ------------------------------------------------------
 -- Server version	5.0.75-0ubuntu10.2
 
---
--- Table structure for table `##DBNAME##_acl_groups`
---
-
-DROP TABLE IF EXISTS `##DBNAME##_acl_groups`;
-CREATE TABLE `##DBNAME##_acl_groups` (
-  `group_id` mediumint(8) unsigned NOT NULL default '0',
-  `forum_id` mediumint(8) unsigned NOT NULL default '0',
-  `auth_option_id` mediumint(8) unsigned NOT NULL default '0',
-  `auth_role_id` mediumint(8) unsigned NOT NULL default '0',
-  `auth_setting` tinyint(2) NOT NULL default '0',
-  KEY `group_id` (`group_id`),
-
-  KEY `auth_opt_id` (`auth_option_id`),
-
-  KEY `auth_role_id` (`auth_role_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
---
--- Dumping data for table `##DBNAME##_acl_groups`
---
-
 INSERT INTO `##DBNAME##_acl_groups` VALUES (1,0,85,0,1),
 (1,0,93,0,1),
 (1,0,111,0,1),
@@ -47,26 +24,6 @@ INSERT INTO `##DBNAME##_acl_groups` VALUES (1,0,85,0,1),
 (5,2,0,14,0),
 (5,2,0,10,0),
 (6,2,0,19,0);
-
---
--- Table structure for table `##DBNAME##_acl_options`
---
-
-DROP TABLE IF EXISTS `##DBNAME##_acl_options`;
-CREATE TABLE `##DBNAME##_acl_options` (
-  `auth_option_id` mediumint(8) unsigned NOT NULL auto_increment,
-  `auth_option` varchar(50) collate utf8_bin NOT NULL default '',
-  `is_global` tinyint(1) unsigned NOT NULL default '0',
-  `is_local` tinyint(1) unsigned NOT NULL default '0',
-  `founder_only` tinyint(1) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`auth_option_id`),
-
-  UNIQUE KEY `auth_option` (`auth_option`)
-) ENGINE=MyISAM AUTO_INCREMENT=118 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `##DBNAME##_acl_options`
---
 
 INSERT INTO `##DBNAME##_acl_options` VALUES (1,'f_',0,1,0),
 (2,'f_announce',0,1,0),
@@ -186,30 +143,6 @@ INSERT INTO `##DBNAME##_acl_options` VALUES (1,'f_',0,1,0),
 (116,'u_viewonline',1,0,0),
 (117,'u_viewprofile',1,0,0);
 
---
--- Table structure for table `##DBNAME##_acl_roles`
---
-
-DROP TABLE IF EXISTS `##DBNAME##_acl_roles`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
-CREATE TABLE `##DBNAME##_acl_roles` (
-  `role_id` mediumint(8) unsigned NOT NULL auto_increment,
-  `role_name` varchar(255) collate utf8_bin NOT NULL default '',
-  `role_description` text collate utf8_bin NOT NULL,
-  `role_type` varchar(10) collate utf8_bin NOT NULL default '',
-  `role_order` smallint(4) unsigned NOT NULL default '0',
-  PRIMARY KEY  (`role_id`),
-
-  KEY `role_type` (`role_type`),
-
-  KEY `role_order` (`role_order`)
-) ENGINE=MyISAM AUTO_INCREMENT=23 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
---
--- Dumping data for table `##DBNAME##_acl_roles`
---
-
 INSERT INTO `##DBNAME##_acl_roles` VALUES (1,'ROLE_ADMIN_STANDARD','ROLE_DESCRIPTION_ADMIN_STANDARD','a_',1),
 (2,'ROLE_ADMIN_FORUM','ROLE_DESCRIPTION_ADMIN_FORUM','a_',3),
 (3,'ROLE_ADMIN_USERGROUP','ROLE_DESCRIPTION_ADMIN_USERGROUP','a_',4),
@@ -232,25 +165,6 @@ INSERT INTO `##DBNAME##_acl_roles` VALUES (1,'ROLE_ADMIN_STANDARD','ROLE_DESCRIP
 (20,'ROLE_FORUM_ONQUEUE','ROLE_DESCRIPTION_FORUM_ONQUEUE','f_',8),
 (21,'ROLE_FORUM_POLLS','ROLE_DESCRIPTION_FORUM_POLLS','f_',6),
 (22,'ROLE_FORUM_LIMITED_POLLS','ROLE_DESCRIPTION_FORUM_LIMITED_POLLS','f_',4);
-
---
--- Table structure for table `##DBNAME##_acl_roles_data`
---
-
-DROP TABLE IF EXISTS `##DBNAME##_acl_roles_data`;
-
-CREATE TABLE `##DBNAME##_acl_roles_data` (
-  `role_id` mediumint(8) unsigned NOT NULL default '0',
-  `auth_option_id` mediumint(8) unsigned NOT NULL default '0',
-  `auth_setting` tinyint(2) NOT NULL default '0',
-  PRIMARY KEY  (`role_id`,`auth_option_id`),
-  KEY `ath_op_id` (`auth_option_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
-
-
---
--- Dumping data for table `##DBNAME##_acl_roles_data`
---
 
 INSERT INTO `##DBNAME##_acl_roles_data` VALUES (1,44,1),
 (1,46,1),
@@ -640,8 +554,8 @@ INSERT INTO `##DBNAME##_acl_roles_data` VALUES (1,44,1),
 (22,25,1),
 (22,27,1),
 (22,29,1);
-/*!40000 ALTER TABLE `##DBNAME##_acl_roles_data` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_acl_users`
@@ -659,7 +573,7 @@ CREATE TABLE `##DBNAME##_acl_users` (
   KEY `auth_option_id` (`auth_option_id`),
 
   KEY `auth_role_id` (`auth_role_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 --
 -- Dumping data for table `##DBNAME##_acl_users`
@@ -694,7 +608,7 @@ CREATE TABLE `##DBNAME##_attachments` (
   KEY `topic_id` (`topic_id`),
   KEY `poster_id` (`poster_id`),
   KEY `is_orphan` (`is_orphan`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 --
 -- Table structure for table `##DBNAME##_banlist`
@@ -716,7 +630,7 @@ CREATE TABLE `##DBNAME##_banlist` (
   KEY `ban_user` (`ban_userid`,`ban_exclude`),
   KEY `ban_email` (`ban_email`,`ban_exclude`),
   KEY `ban_ip` (`ban_ip`,`ban_exclude`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 --
 -- Table structure for table `##DBNAME##_bbcodes`
@@ -736,7 +650,7 @@ CREATE TABLE `##DBNAME##_bbcodes` (
   `second_pass_replace` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`bbcode_id`),
   KEY `display_on_post` (`display_on_posting`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 --
 -- Table structure for table `##DBNAME##_bookmarks`
@@ -747,7 +661,7 @@ CREATE TABLE `##DBNAME##_bookmarks` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`topic_id`,`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 --
 -- Table structure for table `##DBNAME##_bots`
@@ -771,8 +685,8 @@ CREATE TABLE `##DBNAME##_bots` (
 -- Dumping data for table `##DBNAME##_bots`
 --
 
-LOCK TABLES `##DBNAME##_bots` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_bots` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_bots` VALUES (1,1,'AdsBot [Google]',3,'AdsBot-Google',''),
 (2,1,'Alexa [Bot]',4,'ia_archiver',''),
 (3,1,'Alta Vista [Bot]',5,'Scooter/',''),
@@ -823,16 +737,16 @@ INSERT INTO `##DBNAME##_bots` VALUES (1,1,'AdsBot [Google]',3,'AdsBot-Google',''
 (48,1,'Yahoo Slurp [Bot]',50,'Yahoo! DE Slurp',''),
 (49,1,'Yahoo [Bot]',51,'Yahoo! Slurp',''),
 (50,1,'YahooSeeker [Bot]',52,'YahooSeeker/','');
-/*!40000 ALTER TABLE `##DBNAME##_bots` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_config`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_config`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_config` (
   `config_name` varchar(255) collate utf8_bin NOT NULL default '',
   `config_value` varchar(255) collate utf8_bin NOT NULL default '',
@@ -840,15 +754,15 @@ CREATE TABLE `##DBNAME##_config` (
   PRIMARY KEY  (`config_name`),
 
   KEY `is_dynamic` (`is_dynamic`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_config`
 --
 
-LOCK TABLES `##DBNAME##_config` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_config` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_config` VALUES ('active_sessions','0',0),
 ('allow_attachments','1',0),
 ('allow_autologin','1',0),
@@ -1091,16 +1005,16 @@ INSERT INTO `##DBNAME##_config` VALUES ('active_sessions','0',0),
 ('warnings_last_gc','0',1),
 ('board_startdate','1252075878',0),
 ('default_lang','en',0);
-/*!40000 ALTER TABLE `##DBNAME##_config` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_confirm`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_confirm`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_confirm` (
   `confirm_id` char(32) collate utf8_bin NOT NULL default '',
   `session_id` char(32) collate utf8_bin NOT NULL default '',
@@ -1110,48 +1024,48 @@ CREATE TABLE `##DBNAME##_confirm` (
   PRIMARY KEY  (`session_id`,`confirm_id`),
 
   KEY `confirm_type` (`confirm_type`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_confirm`
 --
 
-LOCK TABLES `##DBNAME##_confirm` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_confirm` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_confirm` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_disallow`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_disallow`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_disallow` (
   `disallow_id` mediumint(8) unsigned NOT NULL auto_increment,
   `disallow_username` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`disallow_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_disallow`
 --
 
-LOCK TABLES `##DBNAME##_disallow` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_disallow` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_disallow` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_drafts`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_drafts`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_drafts` (
   `draft_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1163,25 +1077,25 @@ CREATE TABLE `##DBNAME##_drafts` (
   PRIMARY KEY  (`draft_id`),
 
   KEY `save_time` (`save_time`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_drafts`
 --
 
-LOCK TABLES `##DBNAME##_drafts` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_drafts` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_drafts` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_extension_groups`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_extension_groups`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_extension_groups` (
   `group_id` mediumint(8) unsigned NOT NULL auto_increment,
   `group_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -1200,8 +1114,8 @@ CREATE TABLE `##DBNAME##_extension_groups` (
 -- Dumping data for table `##DBNAME##_extension_groups`
 --
 
-LOCK TABLES `##DBNAME##_extension_groups` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_extension_groups` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_extension_groups` VALUES (1,'Images',1,1,1,'',0,'',0),
 (2,'Archives',0,1,1,'',0,'',0),
 (3,'Plain Text',0,0,1,'',0,'',0),
@@ -1211,16 +1125,16 @@ INSERT INTO `##DBNAME##_extension_groups` VALUES (1,'Images',1,1,1,'',0,'',0),
 (7,'Flash Files',5,0,1,'',0,'',0),
 (8,'Quicktime Media',6,0,1,'',0,'',0),
 (9,'Downloadable Files',0,0,1,'',0,'',0);
-/*!40000 ALTER TABLE `##DBNAME##_extension_groups` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_extensions`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_extensions`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_extensions` (
   `extension_id` mediumint(8) unsigned NOT NULL auto_increment,
   `group_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1233,8 +1147,8 @@ CREATE TABLE `##DBNAME##_extensions` (
 -- Dumping data for table `##DBNAME##_extensions`
 --
 
-LOCK TABLES `##DBNAME##_extensions` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_extensions` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_extensions` VALUES (1,1,'gif'),
 (2,1,'png'),
 (3,1,'jpeg'),
@@ -1301,16 +1215,16 @@ INSERT INTO `##DBNAME##_extensions` VALUES (1,1,'gif'),
 (64,9,'mp3'),
 (65,9,'ogg'),
 (66,9,'ogm');
-/*!40000 ALTER TABLE `##DBNAME##_extensions` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_forums`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_forums`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_forums` (
   `forum_id` mediumint(8) unsigned NOT NULL auto_increment,
   `parent_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1365,68 +1279,68 @@ CREATE TABLE `##DBNAME##_forums` (
 -- Dumping data for table `##DBNAME##_forums`
 --
 
-LOCK TABLES `##DBNAME##_forums` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_forums` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_forums` VALUES (1,0,1,4,'','Your first category','','',7,'','','',0,'','','','',7,'',0,0,0,1,1,1,1,2,'',1252075878,'replaceusername','AA0000',32,1,1,1,1,0,0,0,0,0),
 (2,1,2,3,'','Your first forum','Description of your first forum.','',7,'','','',0,'','','','',7,'',0,1,0,1,1,1,1,2,'Welcome to phpBB3',1252075878,'replaceusername','AA0000',32,1,1,1,1,0,0,0,0,0);
-/*!40000 ALTER TABLE `##DBNAME##_forums` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_forums_access`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_forums_access`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_forums_access` (
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `session_id` char(32) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`forum_id`,`user_id`,`session_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_forums_access`
 --
 
-LOCK TABLES `##DBNAME##_forums_access` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_forums_access` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_forums_access` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_forums_track`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_forums_track`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_forums_track` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `mark_time` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`forum_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_forums_track`
 --
 
-LOCK TABLES `##DBNAME##_forums_track` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_forums_track` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_forums_track` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_forums_watch`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_forums_watch`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_forums_watch` (
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1436,25 +1350,25 @@ CREATE TABLE `##DBNAME##_forums_watch` (
   KEY `user_id` (`user_id`),
 
   KEY `notify_stat` (`notify_status`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_forums_watch`
 --
 
-LOCK TABLES `##DBNAME##_forums_watch` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_forums_watch` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_forums_watch` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_groups`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_groups`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_groups` (
   `group_id` mediumint(8) unsigned NOT NULL auto_increment,
   `group_type` tinyint(4) NOT NULL default '1',
@@ -1486,24 +1400,24 @@ CREATE TABLE `##DBNAME##_groups` (
 -- Dumping data for table `##DBNAME##_groups`
 --
 
-LOCK TABLES `##DBNAME##_groups` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_groups` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_groups` VALUES (1,3,0,'GUESTS','','',7,'',0,'',0,0,0,0,'',0,0,0,5,0),
 (2,3,0,'REGISTERED','','',7,'',0,'',0,0,0,0,'',0,0,0,5,0),
 (3,3,0,'REGISTERED_COPPA','','',7,'',0,'',0,0,0,0,'',0,0,0,5,0),
 (4,3,0,'GLOBAL_MODERATORS','','',7,'',0,'',0,0,0,0,'00AA00',0,0,0,0,1),
 (5,3,1,'ADMINISTRATORS','','',7,'',0,'',0,0,0,0,'AA0000',0,0,0,0,1),
 (6,3,0,'BOTS','','',7,'',0,'',0,0,0,0,'9E8DA7',0,0,0,5,0);
-/*!40000 ALTER TABLE `##DBNAME##_groups` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_icons`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_icons`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_icons` (
   `icons_id` mediumint(8) unsigned NOT NULL auto_increment,
   `icons_url` varchar(255) collate utf8_bin NOT NULL default '',
@@ -1521,8 +1435,8 @@ CREATE TABLE `##DBNAME##_icons` (
 -- Dumping data for table `##DBNAME##_icons`
 --
 
-LOCK TABLES `##DBNAME##_icons` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_icons` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_icons` VALUES (1,'misc/fire.gif',16,16,1,1),
 (2,'smile/redface.gif',16,16,9,1),
 (3,'smile/mrgreen.gif',16,16,10,1),
@@ -1533,16 +1447,16 @@ INSERT INTO `##DBNAME##_icons` VALUES (1,'misc/fire.gif',16,16,1,1),
 (8,'smile/info.gif',16,16,8,1),
 (9,'smile/question.gif',16,16,6,1),
 (10,'smile/alert.gif',16,16,7,1);
-/*!40000 ALTER TABLE `##DBNAME##_icons` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_lang`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_lang`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_lang` (
   `lang_id` tinyint(4) NOT NULL auto_increment,
   `lang_iso` varchar(30) collate utf8_bin NOT NULL default '',
@@ -1560,19 +1474,19 @@ CREATE TABLE `##DBNAME##_lang` (
 -- Dumping data for table `##DBNAME##_lang`
 --
 
-LOCK TABLES `##DBNAME##_lang` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_lang` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_lang` VALUES (1,'en','en','British English','British English','phpBB Group');
-/*!40000 ALTER TABLE `##DBNAME##_lang` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_log`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_log`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_log` (
   `log_id` mediumint(8) unsigned NOT NULL auto_increment,
   `log_type` tinyint(4) NOT NULL default '0',
@@ -1602,20 +1516,20 @@ CREATE TABLE `##DBNAME##_log` (
 -- Dumping data for table `##DBNAME##_log`
 --
 
-LOCK TABLES `##DBNAME##_log` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_log` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_log` VALUES (1,2,2,0,0,0,'::1',1252075881,'LOG_ERROR_EMAIL','a:1:{i:0;s:91:\"<strong>EMAIL/PHP/mail()</strong><br /><em>/phpBB3/install/index.php</em><br /><br /><br />\";}'),
 (2,0,2,0,0,0,'::1',1252075881,'LOG_INSTALL_INSTALLED','a:1:{i:0;s:5:\"3.0.5\";}');
-/*!40000 ALTER TABLE `##DBNAME##_log` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_moderator_cache`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_moderator_cache`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_moderator_cache` (
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1626,25 +1540,25 @@ CREATE TABLE `##DBNAME##_moderator_cache` (
   KEY `disp_idx` (`display_on_index`),
 
   KEY `forum_id` (`forum_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_moderator_cache`
 --
 
-LOCK TABLES `##DBNAME##_moderator_cache` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_moderator_cache` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_moderator_cache` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_modules`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_modules`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_modules` (
   `module_id` mediumint(8) unsigned NOT NULL auto_increment,
   `module_enabled` tinyint(1) unsigned NOT NULL default '1',
@@ -1671,8 +1585,8 @@ CREATE TABLE `##DBNAME##_modules` (
 -- Dumping data for table `##DBNAME##_modules`
 --
 
-LOCK TABLES `##DBNAME##_modules` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_modules` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_modules` VALUES (1,1,1,'','acp',0,1,60,'ACP_CAT_GENERAL','',''),
 (2,1,1,'','acp',1,4,17,'ACP_QUICK_ACCESS','',''),
 (3,1,1,'','acp',1,18,39,'ACP_BOARD_CONFIGURATION','',''),
@@ -1862,16 +1776,16 @@ INSERT INTO `##DBNAME##_modules` VALUES (1,1,1,'','acp',0,1,60,'ACP_CAT_GENERAL'
 (187,1,1,'profile','ucp',164,20,21,'UCP_PROFILE_REG_DETAILS','reg_details',''),
 (188,1,1,'zebra','ucp',168,50,51,'UCP_ZEBRA_FRIENDS','friends',''),
 (189,1,1,'zebra','ucp',168,52,53,'UCP_ZEBRA_FOES','foes','');
-/*!40000 ALTER TABLE `##DBNAME##_modules` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_poll_options`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_poll_options`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_poll_options` (
   `poll_option_id` tinyint(4) NOT NULL default '0',
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1880,25 +1794,25 @@ CREATE TABLE `##DBNAME##_poll_options` (
   KEY `poll_opt_id` (`poll_option_id`),
 
   KEY `topic_id` (`topic_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_poll_options`
 --
 
-LOCK TABLES `##DBNAME##_poll_options` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_poll_options` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_poll_options` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_poll_votes`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_poll_votes`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_poll_votes` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `poll_option_id` tinyint(4) NOT NULL default '0',
@@ -1909,25 +1823,25 @@ CREATE TABLE `##DBNAME##_poll_votes` (
   KEY `vote_user_id` (`vote_user_id`),
 
   KEY `vote_user_ip` (`vote_user_ip`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_poll_votes`
 --
 
-LOCK TABLES `##DBNAME##_poll_votes` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_poll_votes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_poll_votes` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_posts`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_posts`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_posts` (
   `post_id` mediumint(8) unsigned NOT NULL auto_increment,
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1975,19 +1889,19 @@ CREATE TABLE `##DBNAME##_posts` (
 -- Dumping data for table `##DBNAME##_posts`
 --
 
-LOCK TABLES `##DBNAME##_posts` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_posts` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_posts` VALUES (1,1,2,2,0,'::1',1252075878,1,0,1,1,1,1,'','Welcome to phpBB3','This is an example post in your phpBB3 installation. Everything seems to be working. You may delete this post if you like and continue to set up your board. During the installation process your first category and your first forum are assigned an appropriate set of permissions for the predefined usergroups administrators, bots, global moderators, guests, registered users and registered COPPA users. If you also choose to delete your first category and your first forum, do not forget to assign permissions for all these usergroups for all new categories and forums you create. It is recommended to rename your first category and your first forum and copy permissions from these while creating new categories and forums. Have fun!','5dd683b17f641daf84c040bfefc58ce9',0,'','',1,0,'',0,0,0);
-/*!40000 ALTER TABLE `##DBNAME##_posts` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_privmsgs`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_privmsgs`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_privmsgs` (
   `msg_id` mediumint(8) unsigned NOT NULL auto_increment,
   `root_level` mediumint(8) unsigned NOT NULL default '0',
@@ -2019,25 +1933,25 @@ CREATE TABLE `##DBNAME##_privmsgs` (
   KEY `author_id` (`author_id`),
 
   KEY `root_level` (`root_level`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_privmsgs`
 --
 
-LOCK TABLES `##DBNAME##_privmsgs` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_privmsgs` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_privmsgs` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_privmsgs_folder`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_privmsgs_folder`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_privmsgs_folder` (
   `folder_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2046,25 +1960,25 @@ CREATE TABLE `##DBNAME##_privmsgs_folder` (
   PRIMARY KEY  (`folder_id`),
 
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_privmsgs_folder`
 --
 
-LOCK TABLES `##DBNAME##_privmsgs_folder` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_privmsgs_folder` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_privmsgs_folder` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_privmsgs_rules`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_privmsgs_rules`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_privmsgs_rules` (
   `rule_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2078,25 +1992,25 @@ CREATE TABLE `##DBNAME##_privmsgs_rules` (
   PRIMARY KEY  (`rule_id`),
 
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_privmsgs_rules`
 --
 
-LOCK TABLES `##DBNAME##_privmsgs_rules` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_privmsgs_rules` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_privmsgs_rules` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_privmsgs_to`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_privmsgs_to`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_privmsgs_to` (
   `msg_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2113,25 +2027,25 @@ CREATE TABLE `##DBNAME##_privmsgs_to` (
   KEY `author_id` (`author_id`),
 
   KEY `usr_flder_id` (`user_id`,`folder_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_privmsgs_to`
 --
 
-LOCK TABLES `##DBNAME##_privmsgs_to` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_privmsgs_to` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_privmsgs_to` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_profile_fields`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_profile_fields`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_profile_fields` (
   `field_id` mediumint(8) unsigned NOT NULL auto_increment,
   `field_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2155,47 +2069,47 @@ CREATE TABLE `##DBNAME##_profile_fields` (
   KEY `fld_type` (`field_type`),
 
   KEY `fld_ordr` (`field_order`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_profile_fields`
 --
 
-LOCK TABLES `##DBNAME##_profile_fields` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_profile_fields` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_profile_fields` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_profile_fields_data`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_profile_fields_data`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_profile_fields_data` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_profile_fields_data`
 --
 
-LOCK TABLES `##DBNAME##_profile_fields_data` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_profile_fields_data` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_profile_fields_data` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_profile_fields_lang`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_profile_fields_lang`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_profile_fields_lang` (
   `field_id` mediumint(8) unsigned NOT NULL default '0',
   `lang_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2203,25 +2117,25 @@ CREATE TABLE `##DBNAME##_profile_fields_lang` (
   `field_type` tinyint(4) NOT NULL default '0',
   `lang_value` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`field_id`,`lang_id`,`option_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_profile_fields_lang`
 --
 
-LOCK TABLES `##DBNAME##_profile_fields_lang` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_profile_fields_lang` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_profile_fields_lang` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_profile_lang`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_profile_lang`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_profile_lang` (
   `field_id` mediumint(8) unsigned NOT NULL default '0',
   `lang_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2229,25 +2143,25 @@ CREATE TABLE `##DBNAME##_profile_lang` (
   `lang_explain` text collate utf8_bin NOT NULL,
   `lang_default_value` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`field_id`,`lang_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_profile_lang`
 --
 
-LOCK TABLES `##DBNAME##_profile_lang` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_profile_lang` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_profile_lang` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_ranks`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_ranks`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_ranks` (
   `rank_id` mediumint(8) unsigned NOT NULL auto_increment,
   `rank_title` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2262,19 +2176,19 @@ CREATE TABLE `##DBNAME##_ranks` (
 -- Dumping data for table `##DBNAME##_ranks`
 --
 
-LOCK TABLES `##DBNAME##_ranks` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_ranks` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_ranks` VALUES (1,'Site Admin',0,1,'');
-/*!40000 ALTER TABLE `##DBNAME##_ranks` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_reports`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_reports`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_reports` (
   `report_id` mediumint(8) unsigned NOT NULL auto_increment,
   `reason_id` smallint(4) unsigned NOT NULL default '0',
@@ -2285,25 +2199,25 @@ CREATE TABLE `##DBNAME##_reports` (
   `report_time` int(11) unsigned NOT NULL default '0',
   `report_text` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`report_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_reports`
 --
 
-LOCK TABLES `##DBNAME##_reports` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_reports` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_reports` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_reports_reasons`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_reports_reasons`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_reports_reasons` (
   `reason_id` smallint(4) unsigned NOT NULL auto_increment,
   `reason_title` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2317,47 +2231,47 @@ CREATE TABLE `##DBNAME##_reports_reasons` (
 -- Dumping data for table `##DBNAME##_reports_reasons`
 --
 
-LOCK TABLES `##DBNAME##_reports_reasons` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_reports_reasons` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_reports_reasons` VALUES (1,'warez','The post contains links to illegal or pirated software.',1),
 (2,'spam','The reported post has the only purpose to advertise for a website or another product.',2),
 (3,'off_topic','The reported post is off topic.',3),
 (4,'other','The reported post does not fit into any other category, please use the further information field.',4);
-/*!40000 ALTER TABLE `##DBNAME##_reports_reasons` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_search_results`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_search_results`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_search_results` (
   `search_key` varchar(32) collate utf8_bin NOT NULL default '',
   `search_time` int(11) unsigned NOT NULL default '0',
   `search_keywords` mediumtext collate utf8_bin NOT NULL,
   `search_authors` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`search_key`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_search_results`
 --
 
-LOCK TABLES `##DBNAME##_search_results` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_search_results` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_search_results` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_search_wordlist`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_search_wordlist`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_search_wordlist` (
   `word_id` mediumint(8) unsigned NOT NULL auto_increment,
   `word_text` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2375,8 +2289,8 @@ CREATE TABLE `##DBNAME##_search_wordlist` (
 -- Dumping data for table `##DBNAME##_search_wordlist`
 --
 
-LOCK TABLES `##DBNAME##_search_wordlist` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_search_wordlist` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_search_wordlist` VALUES (1,'this',0,1),
 (2,'example',0,1),
 (3,'post',0,1),
@@ -2435,16 +2349,16 @@ INSERT INTO `##DBNAME##_search_wordlist` VALUES (1,'this',0,1),
 (56,'have',0,1),
 (57,'fun',0,1),
 (58,'welcome',0,1);
-/*!40000 ALTER TABLE `##DBNAME##_search_wordlist` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_search_wordmatch`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_search_wordmatch`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_search_wordmatch` (
   `post_id` mediumint(8) unsigned NOT NULL default '0',
   `word_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2454,15 +2368,15 @@ CREATE TABLE `##DBNAME##_search_wordmatch` (
   KEY `word_id` (`word_id`),
 
   KEY `post_id` (`post_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_search_wordmatch`
 --
 
-LOCK TABLES `##DBNAME##_search_wordmatch` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_search_wordmatch` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_search_wordmatch` VALUES (1,1,0),
 (1,2,0),
 (1,3,0),
@@ -2522,16 +2436,16 @@ INSERT INTO `##DBNAME##_search_wordmatch` VALUES (1,1,0),
 (1,56,0),
 (1,57,0),
 (1,58,1);
-/*!40000 ALTER TABLE `##DBNAME##_search_wordmatch` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_sessions`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_sessions`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_sessions` (
   `session_id` char(32) collate utf8_bin NOT NULL default '',
   `session_user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2553,27 +2467,27 @@ CREATE TABLE `##DBNAME##_sessions` (
   KEY `session_user_id` (`session_user_id`),
 
   KEY `session_fid` (`session_forum_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_sessions`
 --
 
-LOCK TABLES `##DBNAME##_sessions` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_sessions` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_sessions` VALUES ('f40c33a5bef967134139903b92227764',1,0,1252075881,1252075881,1252075881,'::1','Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.8) Gecko/2009033100 Ubuntu/9.04 (jaunty) Firefox/3.0.8','','install/index.php?mode=install&sub=final',1,0,0),
 ('8eb0e937bd4ab785093d0c1037d6d1b5',2,0,1252075881,1252075881,1252075891,'::1','Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.8) Gecko/2009033100 Ubuntu/9.04 (jaunty) Firefox/3.0.8','','adm/index.php',1,0,1);
-/*!40000 ALTER TABLE `##DBNAME##_sessions` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_sessions_keys`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_sessions_keys`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_sessions_keys` (
   `key_id` char(32) collate utf8_bin NOT NULL default '',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2582,50 +2496,50 @@ CREATE TABLE `##DBNAME##_sessions_keys` (
   PRIMARY KEY  (`key_id`,`user_id`),
 
   KEY `last_login` (`last_login`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_sessions_keys`
 --
 
-LOCK TABLES `##DBNAME##_sessions_keys` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_sessions_keys` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_sessions_keys` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_sitelist`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_sitelist`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_sitelist` (
   `site_id` mediumint(8) unsigned NOT NULL auto_increment,
   `site_ip` varchar(40) collate utf8_bin NOT NULL default '',
   `site_hostname` varchar(255) collate utf8_bin NOT NULL default '',
   `ip_exclude` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`site_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_sitelist`
 --
 
-LOCK TABLES `##DBNAME##_sitelist` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_sitelist` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_sitelist` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_smilies`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_smilies`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_smilies` (
   `smiley_id` mediumint(8) unsigned NOT NULL auto_increment,
   `code` varchar(50) collate utf8_bin NOT NULL default '',
@@ -2645,8 +2559,8 @@ CREATE TABLE `##DBNAME##_smilies` (
 -- Dumping data for table `##DBNAME##_smilies`
 --
 
-LOCK TABLES `##DBNAME##_smilies` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_smilies` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_smilies` VALUES (1,':D','Very Happy','icon_e_biggrin.gif',15,17,1,1),
 (2,':-D','Very Happy','icon_e_biggrin.gif',15,17,2,1),
 (3,':grin:','Very Happy','icon_e_biggrin.gif',15,17,3,1),
@@ -2689,16 +2603,16 @@ INSERT INTO `##DBNAME##_smilies` VALUES (1,':D','Very Happy','icon_e_biggrin.gif
 (40,':mrgreen:','Mr. Green','icon_mrgreen.gif',15,17,40,1),
 (41,':geek:','Geek','icon_e_geek.gif',17,17,41,1),
 (42,':ugeek:','Uber Geek','icon_e_ugeek.gif',17,18,42,1);
-/*!40000 ALTER TABLE `##DBNAME##_smilies` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_styles`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_styles`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_styles` (
   `style_id` mediumint(8) unsigned NOT NULL auto_increment,
   `style_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2723,19 +2637,19 @@ CREATE TABLE `##DBNAME##_styles` (
 -- Dumping data for table `##DBNAME##_styles`
 --
 
-LOCK TABLES `##DBNAME##_styles` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_styles` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_styles` VALUES (1,'prosilver','&copy; phpBB Group',1,1,1,1);
-/*!40000 ALTER TABLE `##DBNAME##_styles` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_styles_imageset`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_styles_imageset`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_styles_imageset` (
   `imageset_id` mediumint(8) unsigned NOT NULL auto_increment,
   `imageset_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2751,19 +2665,19 @@ CREATE TABLE `##DBNAME##_styles_imageset` (
 -- Dumping data for table `##DBNAME##_styles_imageset`
 --
 
-LOCK TABLES `##DBNAME##_styles_imageset` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_styles_imageset` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_styles_imageset` VALUES (1,'prosilver','&copy; phpBB Group','prosilver');
-/*!40000 ALTER TABLE `##DBNAME##_styles_imageset` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_styles_imageset_data`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_styles_imageset_data`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_styles_imageset_data` (
   `image_id` mediumint(8) unsigned NOT NULL auto_increment,
   `image_name` varchar(200) collate utf8_bin NOT NULL default '',
@@ -2782,8 +2696,8 @@ CREATE TABLE `##DBNAME##_styles_imageset_data` (
 -- Dumping data for table `##DBNAME##_styles_imageset_data`
 --
 
-LOCK TABLES `##DBNAME##_styles_imageset_data` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_styles_imageset_data` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_styles_imageset_data` VALUES (1,'site_logo','site_logo.gif','',52,139,1),
 (2,'forum_link','forum_link.gif','',27,27,1),
 (3,'forum_read','forum_read.gif','',27,27,1),
@@ -2862,16 +2776,16 @@ INSERT INTO `##DBNAME##_styles_imageset_data` VALUES (1,'site_logo','site_logo.g
 (76,'button_topic_locked','button_topic_locked.gif','en',25,88,1),
 (77,'button_topic_new','button_topic_new.gif','en',25,96,1),
 (78,'button_topic_reply','button_topic_reply.gif','en',25,96,1);
-/*!40000 ALTER TABLE `##DBNAME##_styles_imageset_data` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_styles_template`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_styles_template`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_styles_template` (
   `template_id` mediumint(8) unsigned NOT NULL auto_increment,
   `template_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2891,19 +2805,19 @@ CREATE TABLE `##DBNAME##_styles_template` (
 -- Dumping data for table `##DBNAME##_styles_template`
 --
 
-LOCK TABLES `##DBNAME##_styles_template` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_styles_template` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_styles_template` VALUES (1,'prosilver','&copy; phpBB Group','prosilver','lNg=',0,0,'');
-/*!40000 ALTER TABLE `##DBNAME##_styles_template` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_styles_template_data`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_styles_template_data`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_styles_template_data` (
   `template_id` mediumint(8) unsigned NOT NULL default '0',
   `template_filename` varchar(100) collate utf8_bin NOT NULL default '',
@@ -2913,25 +2827,25 @@ CREATE TABLE `##DBNAME##_styles_template_data` (
   KEY `tid` (`template_id`),
 
   KEY `tfn` (`template_filename`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_styles_template_data`
 --
 
-LOCK TABLES `##DBNAME##_styles_template_data` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_styles_template_data` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_styles_template_data` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_styles_theme`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_styles_theme`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_styles_theme` (
   `theme_id` mediumint(8) unsigned NOT NULL auto_increment,
   `theme_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2950,19 +2864,19 @@ CREATE TABLE `##DBNAME##_styles_theme` (
 -- Dumping data for table `##DBNAME##_styles_theme`
 --
 
-LOCK TABLES `##DBNAME##_styles_theme` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_styles_theme` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_styles_theme` VALUES (1,'prosilver','&copy; phpBB Group','prosilver',1,0,'');
-/*!40000 ALTER TABLE `##DBNAME##_styles_theme` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_topics`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_topics`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_topics` (
   `topic_id` mediumint(8) unsigned NOT NULL auto_increment,
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
@@ -3018,44 +2932,44 @@ CREATE TABLE `##DBNAME##_topics` (
 -- Dumping data for table `##DBNAME##_topics`
 --
 
-LOCK TABLES `##DBNAME##_topics` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_topics` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_topics` VALUES (1,2,0,0,1,0,'Welcome to phpBB3',2,1252075878,0,0,0,0,0,0,1,'replaceusername','AA0000',1,2,'replaceusername','AA0000','Welcome to phpBB3',1252075878,972086460,0,0,0,'',0,0,1,0,0);
-/*!40000 ALTER TABLE `##DBNAME##_topics` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_topics_posted`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_topics_posted`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_topics_posted` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `topic_posted` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`topic_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_topics_posted`
 --
 
-LOCK TABLES `##DBNAME##_topics_posted` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_topics_posted` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_topics_posted` VALUES (2,1,1);
-/*!40000 ALTER TABLE `##DBNAME##_topics_posted` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_topics_track`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_topics_track`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_topics_track` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
@@ -3064,25 +2978,25 @@ CREATE TABLE `##DBNAME##_topics_track` (
   PRIMARY KEY  (`user_id`,`topic_id`),
 
   KEY `forum_id` (`forum_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_topics_track`
 --
 
-LOCK TABLES `##DBNAME##_topics_track` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_topics_track` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_topics_track` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_topics_watch`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_topics_watch`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_topics_watch` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -3092,25 +3006,25 @@ CREATE TABLE `##DBNAME##_topics_watch` (
   KEY `user_id` (`user_id`),
 
   KEY `notify_stat` (`notify_status`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_topics_watch`
 --
 
-LOCK TABLES `##DBNAME##_topics_watch` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_topics_watch` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_topics_watch` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_user_group`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_user_group`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_user_group` (
   `group_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -3121,15 +3035,15 @@ CREATE TABLE `##DBNAME##_user_group` (
   KEY `user_id` (`user_id`),
 
   KEY `group_leader` (`group_leader`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_user_group`
 --
 
-LOCK TABLES `##DBNAME##_user_group` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_user_group` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_user_group` VALUES (1,1,0,0),
 (2,2,0,0),
 (4,2,0,0),
@@ -3184,16 +3098,16 @@ INSERT INTO `##DBNAME##_user_group` VALUES (1,1,0,0),
 (6,50,0,0),
 (6,51,0,0),
 (6,52,0,0);
-/*!40000 ALTER TABLE `##DBNAME##_user_group` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_users`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_users`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_users` (
   `user_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_type` tinyint(2) NOT NULL default '0',
@@ -3284,8 +3198,8 @@ CREATE TABLE `##DBNAME##_users` (
 -- Dumping data for table `##DBNAME##_users`
 --
 
-LOCK TABLES `##DBNAME##_users` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_users` DISABLE KEYS */;
+
+
 INSERT INTO `##DBNAME##_users` VALUES (1,2,1,'',0,'',1252075878,'Anonymous','anonymous','',0,0,'',0,'',0,0,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'d M Y H:i',1,0,'',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','9ac03816784b8612'),
 (2,3,5,'zik0zjzik0zjzik0w0\ni1cjyo000000\nzik0zjzhb2tc',0,'::1',1252075878,'##USERNAME##','##USERNAME_MINI##','##PASSWORD##',0,0,'##EMAIL##',-171855108320,'',0,0,0,'','',0,0,0,0,0,0,1,'en','0.00',0,'D M d, Y g:i a',1,1,'AA0000',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,1,895,'',0,0,0,'','','','','','','','','','','','','','','0fc1edba092e6c67'),
 (3,2,6,'',0,'',1252075881,'AdsBot [Google]','adsbot [google]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','c3747e53a1de2a64'),
@@ -3338,16 +3252,16 @@ INSERT INTO `##DBNAME##_users` VALUES (1,2,1,'',0,'',1252075878,'Anonymous','ano
 (50,2,6,'',0,'',1252075881,'Yahoo Slurp [Bot]','yahoo slurp [bot]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','f3f4333e6ef07db7'),
 (51,2,6,'',0,'',1252075881,'Yahoo [Bot]','yahoo [bot]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','0f0b9ab6f8516c2f'),
 (52,2,6,'',0,'',1252075881,'YahooSeeker [Bot]','yahooseeker [bot]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','41e0a3f6e6280750');
-/*!40000 ALTER TABLE `##DBNAME##_users` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
 
 --
 -- Table structure for table `##DBNAME##_warnings`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_warnings`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_warnings` (
   `warning_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -3355,65 +3269,65 @@ CREATE TABLE `##DBNAME##_warnings` (
   `log_id` mediumint(8) unsigned NOT NULL default '0',
   `warning_time` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`warning_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_warnings`
 --
 
-LOCK TABLES `##DBNAME##_warnings` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_warnings` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_warnings` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_words`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_words`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_words` (
   `word_id` mediumint(8) unsigned NOT NULL auto_increment,
   `word` varchar(255) collate utf8_bin NOT NULL default '',
   `replacement` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`word_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_words`
 --
 
-LOCK TABLES `##DBNAME##_words` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_words` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_words` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 --
 -- Table structure for table `##DBNAME##_zebra`
 --
 
 DROP TABLE IF EXISTS `##DBNAME##_zebra`;
-SET @saved_cs_client     = @@character_set_client;
-SET character_set_client = utf8;
+
+
 CREATE TABLE `##DBNAME##_zebra` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `zebra_id` mediumint(8) unsigned NOT NULL default '0',
   `friend` tinyint(1) unsigned NOT NULL default '0',
   `foe` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`zebra_id`)
-) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) CHARACTER SET `utf8` COLLATE `utf8_bin`;
 
 
 --
 -- Dumping data for table `##DBNAME##_zebra`
 --
 
-LOCK TABLES `##DBNAME##_zebra` WRITE;
-/*!40000 ALTER TABLE `##DBNAME##_zebra` DISABLE KEYS */;
-/*!40000 ALTER TABLE `##DBNAME##_zebra` ENABLE KEYS */;
-UNLOCK TABLES;
+
+
+
+
 
 -- Dump completed on 2009-09-04 20:05:13

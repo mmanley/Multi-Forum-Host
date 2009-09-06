@@ -1,10 +1,10 @@
 <?php
-	// ======================================== \
+	// =================================================== \
 	// NasuTek Multi Forum Host v4.0.x
 	// Copyright (c) 2009 NasuTek Systems
 	//
-	// http://nasutek.com/index2/index.php?id=42
-	// ======================================== /
+	// http://www.NasuTek.com/products/php/multiforumhost
+	// =================================================== /
 	
 ?>
 </div>
@@ -27,7 +27,7 @@
 	
 	<div id="page-footer">
 		<a href="http://www.phpbb.com/">phpBB</a> &copy; 2000, 2002, 2005, 2007 <a href="http://www.phpbb.com/">phpBB Group</a><br />
-		<a href="http://www.NasuTek.org/">NasuTek Multi Forum Host</a> &copy; 2007 <a href="http://www.NasuTek.org/">NasuTek, Inc.</a>
+		<a href="http://www.NasuTek.com/products/php/multiforumhost">NasuTek Multi Forum Host</a> &copy; 2007-2009 <a href="http://www.NasuTek.com/">NasuTek Systems</a>
 	</div>
 </div>
 </body>
