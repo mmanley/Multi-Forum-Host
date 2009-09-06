@@ -1,10 +1,11 @@
 <?php
-	// =================================================== \
+	// ======================================== \
 	// NasuTek Multi Forum Host v4.0.x
 	// Copyright (c) 2009 NasuTek Systems
 	//
-	// http://www.NasuTek.com/products/php/multiforumhost
-	// =================================================== /
+	// http://nasutek.com/products/php/mfh
+	// Licenced under the BSD Licence
+	// ======================================== /
 	
 ?>
 </div>

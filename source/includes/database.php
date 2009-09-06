@@ -3,81 +3,78 @@
 	// NasuTek Multi Forum Host v4.0.x
 	// Copyright (c) 2009 NasuTek Systems
 	//
-	// http://nasutek.com/index2/index.php?id=42
+	// http://nasutek.com/products/php/mfh
+	// Licenced under the BSD Licence
 	// ======================================== /
-
+	
 	class mfh_mysql_driver
-	{	
-		function connect($host = "localhost", $username, $password, $database, $alt_con_id = NULL)
+	{
+		// Class Initialization Method
+		function __construct() { global $mfhclass; $this->mfhclass = &$mfhclass; }
+		
+		function connect($host = MYSQL_DEFAULT_CONNECT_HOST, $username, $password, $database, $port = MYSQL_DEFAULT_CONNECT_PORT, $boolerror = false)
 		{
-			$connection_id = mysql_connect($host, $username, $password, true);
-			if ($connection_id == false || !$this->select_db($database, $connection_id)) {
-				$this->error();
+			$connection_id = mysql_connect("{$host}:{$port}", $username, $password, false);
+			
+			if (is_resource($connection_id) == false) {
+				return (($boolerror == false) ? $this->error() : false);
 			} else {
-				if (!is_resource($this->root_connection)) {
-					$this->root_connection = $connection_id;
+				if (mysql_select_db($database, $connection_id) == false) {
+					return (($boolerror == false) ? $this->error() : false);
 				} else {
-					if (!is_array($this->alt_connections)) {
-						$this->alt_connections = array();
+					if (is_resource($this->root_connection) == false) {
+						$this->root_connection = $connection_id;
 					}
-					$this->alt_connections[$alt_con_id] = $connection_id;
 				}
 			}
+			
+			return $connection_id;
 		}
-
+		
 		function close()
 		{
-			mysql_close($this->root_connection);
-			if (is_array($this->alt_connections)) {
-				foreach ($this->alt_connections as $id => $connection) {
-					mysql_close($this->alt_connections[$id]);
-				}
-			}
-		}
-
-		function select_db($database, $connection_id)
-		{
-			return mysql_select_db($database, $connection_id);
-		}
-
-		function query($query, $database_id = 1)
-		{
-			global $mfhclass;
-			$query = preg_replace("/\<# query limit #\>/i", ((($mfhclass->info->current_page * $mfhclass->info->config['max_results']) - $mfhclass->info->config['max_results']).", {$mfhclass->info->config['max_results']}"), $query);
-			if ($database_id != NULL && $database_id != 1) {
-				if (!is_resource($this->alt_connections[$database_id])) {
-					$database_info = $this->get_database_info($database_id);
-					$this->connect($database_info['sql_host'], $database_info['sql_username'], $database_info['sql_password'], $database_info['sql_database'], $database_info['database_id']);
-				}
-				$connection_id = $this->alt_connections[$database_id];
-			} else {
-				$connection_id = $this->root_connection;
-			}
-			$this->query_result = mysql_query($query, $connection_id);
-			if (mysql_error() != NULL) {
-				$this->error($query);
-			} else {
-				return $this->query_result;
+			if (is_resource($this->root_connection) == true) {
+				mysql_close($this->root_connection);
 			}
 		}
 		
-		function get_database_info($database_id = 1) {
-			if ($database_id != 1 && $database_id != NULL) {
-				return $this->fetch_array($this->query("SELECT * FROM `mfh_forum_databases` WHERE `database_id` = '{$database_id}';"));
-			} else {
-				return false;
+		function query($query, $input = NULL, $addon = NULL)
+		{
+			if (is_resource($this->root_connection) == false) {
+				$this->connect($this->mfhclass->info->config['sql_host'], $this->mfhclass->info->config['sql_username'], $this->mfhclass->info->config['sql_password'], $this->mfhclass->info->config['sql_database']);
 			}
+			
+			if (strpos($query, "<# QUERY_LIMIT #>") == true) {				
+				$query = str_replace("<# QUERY_LIMIT #>", sprintf("%s, {$this->mfhclass->info->config['max_results']}", (($this->mfhclass->info->current_page * $this->mfhclass->info->config['max_results']) - $this->mfhclass->info->config['max_results'])), $query);
+			}
+			
+			if (is_array($addon) == true && empty($addon) == false) {
+				foreach ($addon as $key => $replacement) {
+					$query = str_replace(sprintf("[[%s]]", ($key + 1)), stripslashes($replacement), $query);
+				}
+			}
+			
+			if (is_array($input) == true && empty($input) == false) {
+				foreach ($input as $key => $replacement) {
+					$query = str_replace(sprintf("[%s]", ($key + 1)), mysql_real_escape_string(str_replace(array("[", "]"), array("\[", "\]"), stripslashes($replacement))), $query);
+				}
+			}
+			
+			$query = str_replace(array("\[", "\]"), array("[", "]"), $query);
+			$this->query_result = mysql_query($query, $this->root_connection);
+			
+			return (($this->query_result == false) ? $this->error($query) : $this->query_result);
 		}
-
+		
 		function total_rows($query_id)
 		{
 			return mysql_num_rows($query_id);
 		}
-
+		
 		function fetch_array($query_id, $result_type = MYSQL_ASSOC)
 		{
 			return mysql_fetch_array($query_id, $result_type);
-		}
+		}		
 		
 		function error($query = "No Query Executed")
 		{

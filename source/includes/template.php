@@ -3,7 +3,8 @@
 	// NasuTek Multi Forum Host v4.0.x
 	// Copyright (c) 2009 NasuTek Systems
 	//
-	// http://nasutek.com/index2/index.php?id=42
+	// http://nasutek.com/products/php/mfh
+	// Licenced under the BSD Licence
 	// ======================================== /
 
 	class mfh_template_engine
