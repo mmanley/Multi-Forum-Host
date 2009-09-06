@@ -4,6 +4,29 @@
 -- ------------------------------------------------------
 -- Server version	5.0.75-0ubuntu10.2
 
+--
+-- Table structure for table `##DBNAME##_acl_groups`
+--
+
+DROP TABLE IF EXISTS `##DBNAME##_acl_groups`;
+CREATE TABLE `##DBNAME##_acl_groups` (
+  `group_id` mediumint(8) unsigned NOT NULL default '0',
+  `forum_id` mediumint(8) unsigned NOT NULL default '0',
+  `auth_option_id` mediumint(8) unsigned NOT NULL default '0',
+  `auth_role_id` mediumint(8) unsigned NOT NULL default '0',
+  `auth_setting` tinyint(2) NOT NULL default '0',
+  KEY `group_id` (`group_id`),
+
+  KEY `auth_opt_id` (`auth_option_id`),
+
+  KEY `auth_role_id` (`auth_role_id`)
+) ENGINE=MyISAM;
+
+
+--
+-- Dumping data for table `##DBNAME##_acl_groups`
+--
+
 INSERT INTO `##DBNAME##_acl_groups` VALUES (1,0,85,0,1),
 (1,0,93,0,1),
 (1,0,111,0,1),
@@ -24,6 +47,26 @@ INSERT INTO `##DBNAME##_acl_groups` VALUES (1,0,85,0,1),
 (5,2,0,14,0),
 (5,2,0,10,0),
 (6,2,0,19,0);
+
+--
+-- Table structure for table `##DBNAME##_acl_options`
+--
+
+DROP TABLE IF EXISTS `##DBNAME##_acl_options`;
+CREATE TABLE `##DBNAME##_acl_options` (
+  `auth_option_id` mediumint(8) unsigned NOT NULL auto_increment,
+  `auth_option` varchar(50) collate utf8_bin NOT NULL default '',
+  `is_global` tinyint(1) unsigned NOT NULL default '0',
+  `is_local` tinyint(1) unsigned NOT NULL default '0',
+  `founder_only` tinyint(1) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`auth_option_id`),
+
+  UNIQUE KEY `auth_option` (`auth_option`)
+) ENGINE=MyISAM;
+
+--
+-- Dumping data for table `##DBNAME##_acl_options`
+--
 
 INSERT INTO `##DBNAME##_acl_options` VALUES (1,'f_',0,1,0),
 (2,'f_announce',0,1,0),
@@ -143,6 +186,30 @@ INSERT INTO `##DBNAME##_acl_options` VALUES (1,'f_',0,1,0),
 (116,'u_viewonline',1,0,0),
 (117,'u_viewprofile',1,0,0);
 
+--
+-- Table structure for table `##DBNAME##_acl_roles`
+--
+
+DROP TABLE IF EXISTS `##DBNAME##_acl_roles`;
+
+
+CREATE TABLE `##DBNAME##_acl_roles` (
+  `role_id` mediumint(8) unsigned NOT NULL auto_increment,
+  `role_name` varchar(255) collate utf8_bin NOT NULL default '',
+  `role_description` text collate utf8_bin NOT NULL,
+  `role_type` varchar(10) collate utf8_bin NOT NULL default '',
+  `role_order` smallint(4) unsigned NOT NULL default '0',
+  PRIMARY KEY  (`role_id`),
+
+  KEY `role_type` (`role_type`),
+
+  KEY `role_order` (`role_order`)
+) ENGINE=MyISAM;
+
+--
+-- Dumping data for table `##DBNAME##_acl_roles`
+--
+
 INSERT INTO `##DBNAME##_acl_roles` VALUES (1,'ROLE_ADMIN_STANDARD','ROLE_DESCRIPTION_ADMIN_STANDARD','a_',1),
 (2,'ROLE_ADMIN_FORUM','ROLE_DESCRIPTION_ADMIN_FORUM','a_',3),
 (3,'ROLE_ADMIN_USERGROUP','ROLE_DESCRIPTION_ADMIN_USERGROUP','a_',4),
@@ -165,6 +232,25 @@ INSERT INTO `##DBNAME##_acl_roles` VALUES (1,'ROLE_ADMIN_STANDARD','ROLE_DESCRIP
 (20,'ROLE_FORUM_ONQUEUE','ROLE_DESCRIPTION_FORUM_ONQUEUE','f_',8),
 (21,'ROLE_FORUM_POLLS','ROLE_DESCRIPTION_FORUM_POLLS','f_',6),
 (22,'ROLE_FORUM_LIMITED_POLLS','ROLE_DESCRIPTION_FORUM_LIMITED_POLLS','f_',4);
+
+--
+-- Table structure for table `##DBNAME##_acl_roles_data`
+--
+
+DROP TABLE IF EXISTS `##DBNAME##_acl_roles_data`;
+
+CREATE TABLE `##DBNAME##_acl_roles_data` (
+  `role_id` mediumint(8) unsigned NOT NULL default '0',
+  `auth_option_id` mediumint(8) unsigned NOT NULL default '0',
+  `auth_setting` tinyint(2) NOT NULL default '0',
+  PRIMARY KEY  (`role_id`,`auth_option_id`),
+  KEY `ath_op_id` (`auth_option_id`)
+) ENGINE=MyISAM;
+
+
+--
+-- Dumping data for table `##DBNAME##_acl_roles_data`
+--
 
 INSERT INTO `##DBNAME##_acl_roles_data` VALUES (1,44,1),
 (1,46,1),
@@ -573,7 +659,7 @@ CREATE TABLE `##DBNAME##_acl_users` (
   KEY `auth_option_id` (`auth_option_id`),
 
   KEY `auth_role_id` (`auth_role_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 --
 -- Dumping data for table `##DBNAME##_acl_users`
@@ -608,7 +694,7 @@ CREATE TABLE `##DBNAME##_attachments` (
   KEY `topic_id` (`topic_id`),
   KEY `poster_id` (`poster_id`),
   KEY `is_orphan` (`is_orphan`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 --
 -- Table structure for table `##DBNAME##_banlist`
@@ -630,7 +716,7 @@ CREATE TABLE `##DBNAME##_banlist` (
   KEY `ban_user` (`ban_userid`,`ban_exclude`),
   KEY `ban_email` (`ban_email`,`ban_exclude`),
   KEY `ban_ip` (`ban_ip`,`ban_exclude`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 --
 -- Table structure for table `##DBNAME##_bbcodes`
@@ -650,7 +736,7 @@ CREATE TABLE `##DBNAME##_bbcodes` (
   `second_pass_replace` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`bbcode_id`),
   KEY `display_on_post` (`display_on_posting`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 --
 -- Table structure for table `##DBNAME##_bookmarks`
@@ -661,7 +747,7 @@ CREATE TABLE `##DBNAME##_bookmarks` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`topic_id`,`user_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 --
 -- Table structure for table `##DBNAME##_bots`
@@ -678,7 +764,7 @@ CREATE TABLE `##DBNAME##_bots` (
   PRIMARY KEY  (`bot_id`),
 
   KEY `bot_active` (`bot_active`)
-) ENGINE=MyISAM AUTO_INCREMENT=51 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -754,7 +840,7 @@ CREATE TABLE `##DBNAME##_config` (
   PRIMARY KEY  (`config_name`),
 
   KEY `is_dynamic` (`is_dynamic`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1024,7 +1110,7 @@ CREATE TABLE `##DBNAME##_confirm` (
   PRIMARY KEY  (`session_id`,`confirm_id`),
 
   KEY `confirm_type` (`confirm_type`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1047,7 +1133,7 @@ CREATE TABLE `##DBNAME##_disallow` (
   `disallow_id` mediumint(8) unsigned NOT NULL auto_increment,
   `disallow_username` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`disallow_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1077,7 +1163,7 @@ CREATE TABLE `##DBNAME##_drafts` (
   PRIMARY KEY  (`draft_id`),
 
   KEY `save_time` (`save_time`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1107,7 +1193,7 @@ CREATE TABLE `##DBNAME##_extension_groups` (
   `allowed_forums` text collate utf8_bin NOT NULL,
   `allow_in_pm` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`group_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=10 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -1140,7 +1226,7 @@ CREATE TABLE `##DBNAME##_extensions` (
   `group_id` mediumint(8) unsigned NOT NULL default '0',
   `extension` varchar(100) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`extension_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=67 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -1272,7 +1358,7 @@ CREATE TABLE `##DBNAME##_forums` (
   KEY `left_right_id` (`left_id`,`right_id`),
 
   KEY `forum_lastpost_id` (`forum_last_post_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -1298,7 +1384,7 @@ CREATE TABLE `##DBNAME##_forums_access` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `session_id` char(32) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`forum_id`,`user_id`,`session_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1322,7 +1408,7 @@ CREATE TABLE `##DBNAME##_forums_track` (
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `mark_time` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`forum_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1350,7 +1436,7 @@ CREATE TABLE `##DBNAME##_forums_watch` (
   KEY `user_id` (`user_id`),
 
   KEY `notify_stat` (`notify_status`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1393,7 +1479,7 @@ CREATE TABLE `##DBNAME##_groups` (
   PRIMARY KEY  (`group_id`),
 
   KEY `group_legend_name` (`group_legend`,`group_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=7 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -1428,7 +1514,7 @@ CREATE TABLE `##DBNAME##_icons` (
   PRIMARY KEY  (`icons_id`),
 
   KEY `display_on_posting` (`display_on_posting`)
-) ENGINE=MyISAM AUTO_INCREMENT=11 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -1467,7 +1553,7 @@ CREATE TABLE `##DBNAME##_lang` (
   PRIMARY KEY  (`lang_id`),
 
   KEY `lang_iso` (`lang_iso`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -1509,7 +1595,7 @@ CREATE TABLE `##DBNAME##_log` (
   KEY `reportee_id` (`reportee_id`),
 
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=3 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -1540,7 +1626,7 @@ CREATE TABLE `##DBNAME##_moderator_cache` (
   KEY `disp_idx` (`display_on_index`),
 
   KEY `forum_id` (`forum_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1578,7 +1664,7 @@ CREATE TABLE `##DBNAME##_modules` (
   KEY `module_enabled` (`module_enabled`),
 
   KEY `class_left_id` (`module_class`,`left_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=190 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -1794,7 +1880,7 @@ CREATE TABLE `##DBNAME##_poll_options` (
   KEY `poll_opt_id` (`poll_option_id`),
 
   KEY `topic_id` (`topic_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1823,7 +1909,7 @@ CREATE TABLE `##DBNAME##_poll_votes` (
   KEY `vote_user_id` (`vote_user_id`),
 
   KEY `vote_user_ip` (`vote_user_ip`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1882,7 +1968,7 @@ CREATE TABLE `##DBNAME##_posts` (
   KEY `post_approved` (`post_approved`),
 
   KEY `tid_post_time` (`topic_id`,`post_time`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -1933,7 +2019,7 @@ CREATE TABLE `##DBNAME##_privmsgs` (
   KEY `author_id` (`author_id`),
 
   KEY `root_level` (`root_level`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1960,7 +2046,7 @@ CREATE TABLE `##DBNAME##_privmsgs_folder` (
   PRIMARY KEY  (`folder_id`),
 
   KEY `user_id` (`user_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -1992,7 +2078,7 @@ CREATE TABLE `##DBNAME##_privmsgs_rules` (
   PRIMARY KEY  (`rule_id`),
 
   KEY `user_id` (`user_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2027,7 +2113,7 @@ CREATE TABLE `##DBNAME##_privmsgs_to` (
   KEY `author_id` (`author_id`),
 
   KEY `usr_flder_id` (`user_id`,`folder_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2069,7 +2155,7 @@ CREATE TABLE `##DBNAME##_profile_fields` (
   KEY `fld_type` (`field_type`),
 
   KEY `fld_ordr` (`field_order`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2091,7 +2177,7 @@ DROP TABLE IF EXISTS `##DBNAME##_profile_fields_data`;
 CREATE TABLE `##DBNAME##_profile_fields_data` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2117,7 +2203,7 @@ CREATE TABLE `##DBNAME##_profile_fields_lang` (
   `field_type` tinyint(4) NOT NULL default '0',
   `lang_value` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`field_id`,`lang_id`,`option_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2143,7 +2229,7 @@ CREATE TABLE `##DBNAME##_profile_lang` (
   `lang_explain` text collate utf8_bin NOT NULL,
   `lang_default_value` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`field_id`,`lang_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2169,7 +2255,7 @@ CREATE TABLE `##DBNAME##_ranks` (
   `rank_special` tinyint(1) unsigned NOT NULL default '0',
   `rank_image` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`rank_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -2199,7 +2285,7 @@ CREATE TABLE `##DBNAME##_reports` (
   `report_time` int(11) unsigned NOT NULL default '0',
   `report_text` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`report_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2224,7 +2310,7 @@ CREATE TABLE `##DBNAME##_reports_reasons` (
   `reason_description` mediumtext collate utf8_bin NOT NULL,
   `reason_order` smallint(4) unsigned NOT NULL default '0',
   PRIMARY KEY  (`reason_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=5 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -2253,7 +2339,7 @@ CREATE TABLE `##DBNAME##_search_results` (
   `search_keywords` mediumtext collate utf8_bin NOT NULL,
   `search_authors` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`search_key`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2282,7 +2368,7 @@ CREATE TABLE `##DBNAME##_search_wordlist` (
   UNIQUE KEY `wrd_txt` (`word_text`),
 
   KEY `wrd_cnt` (`word_count`)
-) ENGINE=MyISAM AUTO_INCREMENT=59 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -2368,7 +2454,7 @@ CREATE TABLE `##DBNAME##_search_wordmatch` (
   KEY `word_id` (`word_id`),
 
   KEY `post_id` (`post_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2467,7 +2553,7 @@ CREATE TABLE `##DBNAME##_sessions` (
   KEY `session_user_id` (`session_user_id`),
 
   KEY `session_fid` (`session_forum_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2496,7 +2582,7 @@ CREATE TABLE `##DBNAME##_sessions_keys` (
   PRIMARY KEY  (`key_id`,`user_id`),
 
   KEY `last_login` (`last_login`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2521,7 +2607,7 @@ CREATE TABLE `##DBNAME##_sitelist` (
   `site_hostname` varchar(255) collate utf8_bin NOT NULL default '',
   `ip_exclude` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`site_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2552,7 +2638,7 @@ CREATE TABLE `##DBNAME##_smilies` (
   PRIMARY KEY  (`smiley_id`),
 
   KEY `display_on_post` (`display_on_posting`)
-) ENGINE=MyISAM AUTO_INCREMENT=43 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -2630,7 +2716,7 @@ CREATE TABLE `##DBNAME##_styles` (
   KEY `theme_id` (`theme_id`),
 
   KEY `imageset_id` (`imageset_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -2658,7 +2744,7 @@ CREATE TABLE `##DBNAME##_styles_imageset` (
   PRIMARY KEY  (`imageset_id`),
 
   UNIQUE KEY `imgset_nm` (`imageset_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -2689,7 +2775,7 @@ CREATE TABLE `##DBNAME##_styles_imageset_data` (
   PRIMARY KEY  (`image_id`),
 
   KEY `i_d` (`imageset_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=79 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -2798,7 +2884,7 @@ CREATE TABLE `##DBNAME##_styles_template` (
   PRIMARY KEY  (`template_id`),
 
   UNIQUE KEY `tmplte_nm` (`template_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -2827,7 +2913,7 @@ CREATE TABLE `##DBNAME##_styles_template_data` (
   KEY `tid` (`template_id`),
 
   KEY `tfn` (`template_filename`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2857,7 +2943,7 @@ CREATE TABLE `##DBNAME##_styles_theme` (
   PRIMARY KEY  (`theme_id`),
 
   UNIQUE KEY `theme_name` (`theme_name`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -2925,7 +3011,7 @@ CREATE TABLE `##DBNAME##_topics` (
   KEY `forum_appr_last` (`forum_id`,`topic_approved`,`topic_last_post_id`),
 
   KEY `fid_time_moved` (`forum_id`,`topic_last_post_time`,`topic_moved_id`)
-) ENGINE=MyISAM AUTO_INCREMENT=2 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -2950,7 +3036,7 @@ CREATE TABLE `##DBNAME##_topics_posted` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `topic_posted` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`topic_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -2978,7 +3064,7 @@ CREATE TABLE `##DBNAME##_topics_track` (
   PRIMARY KEY  (`user_id`,`topic_id`),
 
   KEY `forum_id` (`forum_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -3006,7 +3092,7 @@ CREATE TABLE `##DBNAME##_topics_watch` (
   KEY `user_id` (`user_id`),
 
   KEY `notify_stat` (`notify_status`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -3035,7 +3121,7 @@ CREATE TABLE `##DBNAME##_user_group` (
   KEY `user_id` (`user_id`),
 
   KEY `group_leader` (`group_leader`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -3191,7 +3277,7 @@ CREATE TABLE `##DBNAME##_users` (
   KEY `user_email_hash` (`user_email_hash`),
 
   KEY `user_type` (`user_type`)
-) ENGINE=MyISAM AUTO_INCREMENT=53 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=MyISAM;
 
 
 --
@@ -3269,7 +3355,7 @@ CREATE TABLE `##DBNAME##_warnings` (
   `log_id` mediumint(8) unsigned NOT NULL default '0',
   `warning_time` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`warning_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -3293,7 +3379,7 @@ CREATE TABLE `##DBNAME##_words` (
   `word` varchar(255) collate utf8_bin NOT NULL default '',
   `replacement` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`word_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -3318,7 +3404,7 @@ CREATE TABLE `##DBNAME##_zebra` (
   `friend` tinyint(1) unsigned NOT NULL default '0',
   `foe` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`zebra_id`)
-) CHARACTER SET `utf8` COLLATE `utf8_bin`;
+) ENGINE=MyISAM;
 
 
 --
@@ -3331,3 +3417,4 @@ CREATE TABLE `##DBNAME##_zebra` (
 
 
 -- Dump completed on 2009-09-04 20:05:13
+
