@@ -111,7 +111,7 @@
 							"USERNAME_MINI" => $mfhclass->input->post_vars['username'],
 							"PASSWORD" => md5($mfhclass->input->post_vars['password']));
 
-				$myFile = "{$mfhclass->info->root_path}/sql/phpbb-{$mfhclass->info->phpbb_version}";
+				$myFile = "{$mfhclass->info->root_path}/sql/phpbb-{$mfhclass->info->phpbb_version}.sql";
 				$fh = fopen($myFile, 'r');
 				$sqlscript = fread($fh, filesize($myFile));
 				fclose($fh);
