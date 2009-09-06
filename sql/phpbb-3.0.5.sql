@@ -1,13 +1,3 @@
--- MySQL dump 10.11
---
--- Host: localhost    Database: test
--- ------------------------------------------------------
--- Server version	5.0.75-0ubuntu10.2
-
---
--- Table structure for table `##DBNAME##_acl_groups`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_acl_groups`;
 CREATE TABLE `##DBNAME##_acl_groups` (
   `group_id` mediumint(8) unsigned NOT NULL default '0',
@@ -16,16 +6,9 @@ CREATE TABLE `##DBNAME##_acl_groups` (
   `auth_role_id` mediumint(8) unsigned NOT NULL default '0',
   `auth_setting` tinyint(2) NOT NULL default '0',
   KEY `group_id` (`group_id`),
-
   KEY `auth_opt_id` (`auth_option_id`),
-
   KEY `auth_role_id` (`auth_role_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_acl_groups`
---
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_acl_groups` VALUES (1,0,85,0,1),
 (1,0,93,0,1),
@@ -48,10 +31,6 @@ INSERT INTO `##DBNAME##_acl_groups` VALUES (1,0,85,0,1),
 (5,2,0,10,0),
 (6,2,0,19,0);
 
---
--- Table structure for table `##DBNAME##_acl_options`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_acl_options`;
 CREATE TABLE `##DBNAME##_acl_options` (
   `auth_option_id` mediumint(8) unsigned NOT NULL auto_increment,
@@ -60,9 +39,8 @@ CREATE TABLE `##DBNAME##_acl_options` (
   `is_local` tinyint(1) unsigned NOT NULL default '0',
   `founder_only` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`auth_option_id`),
-
   UNIQUE KEY `auth_option` (`auth_option`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM ;
 
 --
 -- Dumping data for table `##DBNAME##_acl_options`
@@ -186,13 +164,7 @@ INSERT INTO `##DBNAME##_acl_options` VALUES (1,'f_',0,1,0),
 (116,'u_viewonline',1,0,0),
 (117,'u_viewprofile',1,0,0);
 
---
--- Table structure for table `##DBNAME##_acl_roles`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_acl_roles`;
-
-
 CREATE TABLE `##DBNAME##_acl_roles` (
   `role_id` mediumint(8) unsigned NOT NULL auto_increment,
   `role_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -200,15 +172,9 @@ CREATE TABLE `##DBNAME##_acl_roles` (
   `role_type` varchar(10) collate utf8_bin NOT NULL default '',
   `role_order` smallint(4) unsigned NOT NULL default '0',
   PRIMARY KEY  (`role_id`),
-
   KEY `role_type` (`role_type`),
-
   KEY `role_order` (`role_order`)
-) ENGINE=MyISAM;
-
---
--- Dumping data for table `##DBNAME##_acl_roles`
---
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_acl_roles` VALUES (1,'ROLE_ADMIN_STANDARD','ROLE_DESCRIPTION_ADMIN_STANDARD','a_',1),
 (2,'ROLE_ADMIN_FORUM','ROLE_DESCRIPTION_ADMIN_FORUM','a_',3),
@@ -233,24 +199,14 @@ INSERT INTO `##DBNAME##_acl_roles` VALUES (1,'ROLE_ADMIN_STANDARD','ROLE_DESCRIP
 (21,'ROLE_FORUM_POLLS','ROLE_DESCRIPTION_FORUM_POLLS','f_',6),
 (22,'ROLE_FORUM_LIMITED_POLLS','ROLE_DESCRIPTION_FORUM_LIMITED_POLLS','f_',4);
 
---
--- Table structure for table `##DBNAME##_acl_roles_data`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_acl_roles_data`;
-
 CREATE TABLE `##DBNAME##_acl_roles_data` (
   `role_id` mediumint(8) unsigned NOT NULL default '0',
   `auth_option_id` mediumint(8) unsigned NOT NULL default '0',
   `auth_setting` tinyint(2) NOT NULL default '0',
   PRIMARY KEY  (`role_id`,`auth_option_id`),
   KEY `ath_op_id` (`auth_option_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_acl_roles_data`
---
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_acl_roles_data` VALUES (1,44,1),
 (1,46,1),
@@ -641,12 +597,6 @@ INSERT INTO `##DBNAME##_acl_roles_data` VALUES (1,44,1),
 (22,27,1),
 (22,29,1);
 
-
-
---
--- Table structure for table `##DBNAME##_acl_users`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_acl_users`;
 CREATE TABLE `##DBNAME##_acl_users` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -655,21 +605,11 @@ CREATE TABLE `##DBNAME##_acl_users` (
   `auth_role_id` mediumint(8) unsigned NOT NULL default '0',
   `auth_setting` tinyint(2) NOT NULL default '0',
   KEY `user_id` (`user_id`),
-
   KEY `auth_option_id` (`auth_option_id`),
-
   KEY `auth_role_id` (`auth_role_id`)
-) ENGINE=MyISAM;
-
---
--- Dumping data for table `##DBNAME##_acl_users`
---
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_acl_users` VALUES (2,0,0,5,0);
-
---
--- Table structure for table `##DBNAME##_attachments`
---
 
 DROP TABLE IF EXISTS `##DBNAME##_attachments`;
 CREATE TABLE `##DBNAME##_attachments` (
@@ -694,11 +634,7 @@ CREATE TABLE `##DBNAME##_attachments` (
   KEY `topic_id` (`topic_id`),
   KEY `poster_id` (`poster_id`),
   KEY `is_orphan` (`is_orphan`)
-) ENGINE=MyISAM;
-
---
--- Table structure for table `##DBNAME##_banlist`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_banlist`;
 CREATE TABLE `##DBNAME##_banlist` (
@@ -716,11 +652,7 @@ CREATE TABLE `##DBNAME##_banlist` (
   KEY `ban_user` (`ban_userid`,`ban_exclude`),
   KEY `ban_email` (`ban_email`,`ban_exclude`),
   KEY `ban_ip` (`ban_ip`,`ban_exclude`)
-) ENGINE=MyISAM;
-
---
--- Table structure for table `##DBNAME##_bbcodes`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_bbcodes`;
 CREATE TABLE `##DBNAME##_bbcodes` (
@@ -736,22 +668,14 @@ CREATE TABLE `##DBNAME##_bbcodes` (
   `second_pass_replace` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`bbcode_id`),
   KEY `display_on_post` (`display_on_posting`)
-) ENGINE=MyISAM;
-
---
--- Table structure for table `##DBNAME##_bookmarks`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_bookmarks`;
 CREATE TABLE `##DBNAME##_bookmarks` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`topic_id`,`user_id`)
-) ENGINE=MyISAM;
-
---
--- Table structure for table `##DBNAME##_bots`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_bots`;
 CREATE TABLE `##DBNAME##_bots` (
@@ -762,16 +686,8 @@ CREATE TABLE `##DBNAME##_bots` (
   `bot_agent` varchar(255) collate utf8_bin NOT NULL default '',
   `bot_ip` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`bot_id`),
-
   KEY `bot_active` (`bot_active`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_bots`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_bots` VALUES (1,1,'AdsBot [Google]',3,'AdsBot-Google',''),
 (2,1,'Alexa [Bot]',4,'ia_archiver',''),
@@ -824,30 +740,14 @@ INSERT INTO `##DBNAME##_bots` VALUES (1,1,'AdsBot [Google]',3,'AdsBot-Google',''
 (49,1,'Yahoo [Bot]',51,'Yahoo! Slurp',''),
 (50,1,'YahooSeeker [Bot]',52,'YahooSeeker/','');
 
-
-
---
--- Table structure for table `##DBNAME##_config`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_config`;
-
-
 CREATE TABLE `##DBNAME##_config` (
   `config_name` varchar(255) collate utf8_bin NOT NULL default '',
   `config_value` varchar(255) collate utf8_bin NOT NULL default '',
   `is_dynamic` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`config_name`),
-
   KEY `is_dynamic` (`is_dynamic`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_config`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_config` VALUES ('active_sessions','0',0),
 ('allow_attachments','1',0),
@@ -1108,50 +1008,17 @@ CREATE TABLE `##DBNAME##_confirm` (
   `code` varchar(8) collate utf8_bin NOT NULL default '',
   `seed` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`session_id`,`confirm_id`),
-
   KEY `confirm_type` (`confirm_type`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_confirm`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_disallow`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_disallow`;
-
-
 CREATE TABLE `##DBNAME##_disallow` (
   `disallow_id` mediumint(8) unsigned NOT NULL auto_increment,
   `disallow_username` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`disallow_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_disallow`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_drafts`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_drafts`;
-
-
 CREATE TABLE `##DBNAME##_drafts` (
   `draft_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1161,27 +1028,10 @@ CREATE TABLE `##DBNAME##_drafts` (
   `draft_subject` varchar(255) collate utf8_bin NOT NULL default '',
   `draft_message` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`draft_id`),
-
   KEY `save_time` (`save_time`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_drafts`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_extension_groups`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_extension_groups`;
-
-
 CREATE TABLE `##DBNAME##_extension_groups` (
   `group_id` mediumint(8) unsigned NOT NULL auto_increment,
   `group_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -1193,14 +1043,7 @@ CREATE TABLE `##DBNAME##_extension_groups` (
   `allowed_forums` text collate utf8_bin NOT NULL,
   `allow_in_pm` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`group_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_extension_groups`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_extension_groups` VALUES (1,'Images',1,1,1,'',0,'',0),
 (2,'Archives',0,1,1,'',0,'',0),
@@ -1212,28 +1055,13 @@ INSERT INTO `##DBNAME##_extension_groups` VALUES (1,'Images',1,1,1,'',0,'',0),
 (8,'Quicktime Media',6,0,1,'',0,'',0),
 (9,'Downloadable Files',0,0,1,'',0,'',0);
 
-
-
---
--- Table structure for table `##DBNAME##_extensions`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_extensions`;
-
-
 CREATE TABLE `##DBNAME##_extensions` (
   `extension_id` mediumint(8) unsigned NOT NULL auto_increment,
   `group_id` mediumint(8) unsigned NOT NULL default '0',
   `extension` varchar(100) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`extension_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_extensions`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_extensions` VALUES (1,1,'gif'),
 (2,1,'png'),
@@ -1302,15 +1130,7 @@ INSERT INTO `##DBNAME##_extensions` VALUES (1,1,'gif'),
 (65,9,'ogg'),
 (66,9,'ogm');
 
-
-
---
--- Table structure for table `##DBNAME##_forums`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_forums`;
-
-
 CREATE TABLE `##DBNAME##_forums` (
   `forum_id` mediumint(8) unsigned NOT NULL auto_increment,
   `parent_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1354,107 +1174,40 @@ CREATE TABLE `##DBNAME##_forums` (
   `prune_viewed` mediumint(8) unsigned NOT NULL default '0',
   `prune_freq` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`forum_id`),
-
   KEY `left_right_id` (`left_id`,`right_id`),
-
   KEY `forum_lastpost_id` (`forum_last_post_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_forums`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_forums` VALUES (1,0,1,4,'','Your first category','','',7,'','','',0,'','','','',7,'',0,0,0,1,1,1,1,2,'',1252075878,'replaceusername','AA0000',32,1,1,1,1,0,0,0,0,0),
 (2,1,2,3,'','Your first forum','Description of your first forum.','',7,'','','',0,'','','','',7,'',0,1,0,1,1,1,1,2,'Welcome to phpBB3',1252075878,'replaceusername','AA0000',32,1,1,1,1,0,0,0,0,0);
 
-
-
---
--- Table structure for table `##DBNAME##_forums_access`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_forums_access`;
-
-
 CREATE TABLE `##DBNAME##_forums_access` (
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `session_id` char(32) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`forum_id`,`user_id`,`session_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_forums_access`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_forums_track`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_forums_track`;
-
-
 CREATE TABLE `##DBNAME##_forums_track` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `mark_time` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`forum_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_forums_track`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_forums_watch`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_forums_watch`;
-
-
 CREATE TABLE `##DBNAME##_forums_watch` (
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `notify_status` tinyint(1) unsigned NOT NULL default '0',
   KEY `forum_id` (`forum_id`),
-
   KEY `user_id` (`user_id`),
-
   KEY `notify_stat` (`notify_status`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_forums_watch`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_groups`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_groups`;
-
-
 CREATE TABLE `##DBNAME##_groups` (
   `group_id` mediumint(8) unsigned NOT NULL auto_increment,
   `group_type` tinyint(4) NOT NULL default '1',
@@ -1477,16 +1230,8 @@ CREATE TABLE `##DBNAME##_groups` (
   `group_max_recipients` mediumint(8) unsigned NOT NULL default '0',
   `group_legend` tinyint(1) unsigned NOT NULL default '1',
   PRIMARY KEY  (`group_id`),
-
   KEY `group_legend_name` (`group_legend`,`group_name`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_groups`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_groups` VALUES (1,3,0,'GUESTS','','',7,'',0,'',0,0,0,0,'',0,0,0,5,0),
 (2,3,0,'REGISTERED','','',7,'',0,'',0,0,0,0,'',0,0,0,5,0),
@@ -1495,15 +1240,7 @@ INSERT INTO `##DBNAME##_groups` VALUES (1,3,0,'GUESTS','','',7,'',0,'',0,0,0,0,'
 (5,3,1,'ADMINISTRATORS','','',7,'',0,'',0,0,0,0,'AA0000',0,0,0,0,1),
 (6,3,0,'BOTS','','',7,'',0,'',0,0,0,0,'9E8DA7',0,0,0,5,0);
 
-
-
---
--- Table structure for table `##DBNAME##_icons`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_icons`;
-
-
 CREATE TABLE `##DBNAME##_icons` (
   `icons_id` mediumint(8) unsigned NOT NULL auto_increment,
   `icons_url` varchar(255) collate utf8_bin NOT NULL default '',
@@ -1512,16 +1249,8 @@ CREATE TABLE `##DBNAME##_icons` (
   `icons_order` mediumint(8) unsigned NOT NULL default '0',
   `display_on_posting` tinyint(1) unsigned NOT NULL default '1',
   PRIMARY KEY  (`icons_id`),
-
   KEY `display_on_posting` (`display_on_posting`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_icons`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_icons` VALUES (1,'misc/fire.gif',16,16,1,1),
 (2,'smile/redface.gif',16,16,9,1),
@@ -1534,15 +1263,7 @@ INSERT INTO `##DBNAME##_icons` VALUES (1,'misc/fire.gif',16,16,1,1),
 (9,'smile/question.gif',16,16,6,1),
 (10,'smile/alert.gif',16,16,7,1);
 
-
-
---
--- Table structure for table `##DBNAME##_lang`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_lang`;
-
-
 CREATE TABLE `##DBNAME##_lang` (
   `lang_id` tinyint(4) NOT NULL auto_increment,
   `lang_iso` varchar(30) collate utf8_bin NOT NULL default '',
@@ -1551,28 +1272,12 @@ CREATE TABLE `##DBNAME##_lang` (
   `lang_local_name` varchar(255) collate utf8_bin NOT NULL default '',
   `lang_author` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`lang_id`),
-
   KEY `lang_iso` (`lang_iso`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_lang`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_lang` VALUES (1,'en','en','British English','British English','phpBB Group');
 
-
-
---
--- Table structure for table `##DBNAME##_log`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_log`;
-
-
 CREATE TABLE `##DBNAME##_log` (
   `log_id` mediumint(8) unsigned NOT NULL auto_increment,
   `log_type` tinyint(4) NOT NULL default '0',
@@ -1585,37 +1290,17 @@ CREATE TABLE `##DBNAME##_log` (
   `log_operation` text collate utf8_bin NOT NULL,
   `log_data` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`log_id`),
-
   KEY `log_type` (`log_type`),
-
   KEY `forum_id` (`forum_id`),
-
   KEY `topic_id` (`topic_id`),
-
   KEY `reportee_id` (`reportee_id`),
-
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_log`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_log` VALUES (1,2,2,0,0,0,'::1',1252075881,'LOG_ERROR_EMAIL','a:1:{i:0;s:91:\"<strong>EMAIL/PHP/mail()</strong><br /><em>/phpBB3/install/index.php</em><br /><br /><br />\";}'),
 (2,0,2,0,0,0,'::1',1252075881,'LOG_INSTALL_INSTALLED','a:1:{i:0;s:5:\"3.0.5\";}');
 
-
-
---
--- Table structure for table `##DBNAME##_moderator_cache`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_moderator_cache`;
-
-
 CREATE TABLE `##DBNAME##_moderator_cache` (
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1624,27 +1309,10 @@ CREATE TABLE `##DBNAME##_moderator_cache` (
   `group_name` varchar(255) collate utf8_bin NOT NULL default '',
   `display_on_index` tinyint(1) unsigned NOT NULL default '1',
   KEY `disp_idx` (`display_on_index`),
-
   KEY `forum_id` (`forum_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_moderator_cache`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_modules`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_modules`;
-
-
 CREATE TABLE `##DBNAME##_modules` (
   `module_id` mediumint(8) unsigned NOT NULL auto_increment,
   `module_enabled` tinyint(1) unsigned NOT NULL default '1',
@@ -1658,20 +1326,10 @@ CREATE TABLE `##DBNAME##_modules` (
   `module_mode` varchar(255) collate utf8_bin NOT NULL default '',
   `module_auth` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`module_id`),
-
   KEY `left_right_id` (`left_id`,`right_id`),
-
   KEY `module_enabled` (`module_enabled`),
-
   KEY `class_left_id` (`module_class`,`left_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_modules`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_modules` VALUES (1,1,1,'','acp',0,1,60,'ACP_CAT_GENERAL','',''),
 (2,1,1,'','acp',1,4,17,'ACP_QUICK_ACCESS','',''),
@@ -1863,71 +1521,28 @@ INSERT INTO `##DBNAME##_modules` VALUES (1,1,1,'','acp',0,1,60,'ACP_CAT_GENERAL'
 (188,1,1,'zebra','ucp',168,50,51,'UCP_ZEBRA_FRIENDS','friends',''),
 (189,1,1,'zebra','ucp',168,52,53,'UCP_ZEBRA_FOES','foes','');
 
-
-
---
--- Table structure for table `##DBNAME##_poll_options`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_poll_options`;
-
-
 CREATE TABLE `##DBNAME##_poll_options` (
   `poll_option_id` tinyint(4) NOT NULL default '0',
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `poll_option_text` text collate utf8_bin NOT NULL,
   `poll_option_total` mediumint(8) unsigned NOT NULL default '0',
   KEY `poll_opt_id` (`poll_option_id`),
-
   KEY `topic_id` (`topic_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_poll_options`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_poll_votes`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_poll_votes`;
-
-
 CREATE TABLE `##DBNAME##_poll_votes` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `poll_option_id` tinyint(4) NOT NULL default '0',
   `vote_user_id` mediumint(8) unsigned NOT NULL default '0',
   `vote_user_ip` varchar(40) collate utf8_bin NOT NULL default '',
   KEY `topic_id` (`topic_id`),
-
   KEY `vote_user_id` (`vote_user_id`),
-
   KEY `vote_user_ip` (`vote_user_ip`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_poll_votes`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_posts`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_posts`;
-
-
 CREATE TABLE `##DBNAME##_posts` (
   `post_id` mediumint(8) unsigned NOT NULL auto_increment,
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1956,38 +1571,17 @@ CREATE TABLE `##DBNAME##_posts` (
   `post_edit_count` smallint(4) unsigned NOT NULL default '0',
   `post_edit_locked` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`post_id`),
-
   KEY `forum_id` (`forum_id`),
-
   KEY `topic_id` (`topic_id`),
-
   KEY `poster_ip` (`poster_ip`),
-
   KEY `poster_id` (`poster_id`),
-
   KEY `post_approved` (`post_approved`),
-
   KEY `tid_post_time` (`topic_id`,`post_time`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_posts`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_posts` VALUES (1,1,2,2,0,'::1',1252075878,1,0,1,1,1,1,'','Welcome to phpBB3','This is an example post in your phpBB3 installation. Everything seems to be working. You may delete this post if you like and continue to set up your board. During the installation process your first category and your first forum are assigned an appropriate set of permissions for the predefined usergroups administrators, bots, global moderators, guests, registered users and registered COPPA users. If you also choose to delete your first category and your first forum, do not forget to assign permissions for all these usergroups for all new categories and forums you create. It is recommended to rename your first category and your first forum and copy permissions from these while creating new categories and forums. Have fun!','5dd683b17f641daf84c040bfefc58ce9',0,'','',1,0,'',0,0,0);
 
-
-
---
--- Table structure for table `##DBNAME##_privmsgs`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_privmsgs`;
-
-
 CREATE TABLE `##DBNAME##_privmsgs` (
   `msg_id` mediumint(8) unsigned NOT NULL auto_increment,
   `root_level` mediumint(8) unsigned NOT NULL default '0',
@@ -2011,60 +1605,23 @@ CREATE TABLE `##DBNAME##_privmsgs` (
   `to_address` text collate utf8_bin NOT NULL,
   `bcc_address` text collate utf8_bin NOT NULL,
   PRIMARY KEY  (`msg_id`),
-
   KEY `author_ip` (`author_ip`),
-
   KEY `message_time` (`message_time`),
-
   KEY `author_id` (`author_id`),
-
   KEY `root_level` (`root_level`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_privmsgs`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_privmsgs_folder`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_privmsgs_folder`;
-
-
 CREATE TABLE `##DBNAME##_privmsgs_folder` (
   `folder_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `folder_name` varchar(255) collate utf8_bin NOT NULL default '',
   `pm_count` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`folder_id`),
-
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_privmsgs_folder`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_privmsgs_rules`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_privmsgs_rules`;
-
-
 CREATE TABLE `##DBNAME##_privmsgs_rules` (
   `rule_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2076,27 +1633,10 @@ CREATE TABLE `##DBNAME##_privmsgs_rules` (
   `rule_action` mediumint(8) unsigned NOT NULL default '0',
   `rule_folder_id` int(11) NOT NULL default '0',
   PRIMARY KEY  (`rule_id`),
-
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_privmsgs_rules`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_privmsgs_to`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_privmsgs_to`;
-
-
 CREATE TABLE `##DBNAME##_privmsgs_to` (
   `msg_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2109,29 +1649,11 @@ CREATE TABLE `##DBNAME##_privmsgs_to` (
   `pm_forwarded` tinyint(1) unsigned NOT NULL default '0',
   `folder_id` int(11) NOT NULL default '0',
   KEY `msg_id` (`msg_id`),
-
   KEY `author_id` (`author_id`),
-
   KEY `usr_flder_id` (`user_id`,`folder_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_privmsgs_to`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_profile_fields`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_profile_fields`;
-
-
 CREATE TABLE `##DBNAME##_profile_fields` (
   `field_id` mediumint(8) unsigned NOT NULL auto_increment,
   `field_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2151,51 +1673,17 @@ CREATE TABLE `##DBNAME##_profile_fields` (
   `field_active` tinyint(1) unsigned NOT NULL default '0',
   `field_order` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`field_id`),
-
   KEY `fld_type` (`field_type`),
-
   KEY `fld_ordr` (`field_order`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_profile_fields`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_profile_fields_data`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_profile_fields_data`;
-
-
 CREATE TABLE `##DBNAME##_profile_fields_data` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_profile_fields_data`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_profile_fields_lang`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_profile_fields_lang`;
-
-
 CREATE TABLE `##DBNAME##_profile_fields_lang` (
   `field_id` mediumint(8) unsigned NOT NULL default '0',
   `lang_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2203,25 +1691,9 @@ CREATE TABLE `##DBNAME##_profile_fields_lang` (
   `field_type` tinyint(4) NOT NULL default '0',
   `lang_value` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`field_id`,`lang_id`,`option_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_profile_fields_lang`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_profile_lang`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_profile_lang`;
-
-
 CREATE TABLE `##DBNAME##_profile_lang` (
   `field_id` mediumint(8) unsigned NOT NULL default '0',
   `lang_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2229,25 +1701,9 @@ CREATE TABLE `##DBNAME##_profile_lang` (
   `lang_explain` text collate utf8_bin NOT NULL,
   `lang_default_value` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`field_id`,`lang_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_profile_lang`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_ranks`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_ranks`;
-
-
 CREATE TABLE `##DBNAME##_ranks` (
   `rank_id` mediumint(8) unsigned NOT NULL auto_increment,
   `rank_title` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2255,26 +1711,11 @@ CREATE TABLE `##DBNAME##_ranks` (
   `rank_special` tinyint(1) unsigned NOT NULL default '0',
   `rank_image` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`rank_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_ranks`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_ranks` VALUES (1,'Site Admin',0,1,'');
 
-
-
---
--- Table structure for table `##DBNAME##_reports`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_reports`;
-
-
 CREATE TABLE `##DBNAME##_reports` (
   `report_id` mediumint(8) unsigned NOT NULL auto_increment,
   `reason_id` smallint(4) unsigned NOT NULL default '0',
@@ -2285,97 +1726,41 @@ CREATE TABLE `##DBNAME##_reports` (
   `report_time` int(11) unsigned NOT NULL default '0',
   `report_text` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`report_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_reports`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_reports_reasons`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_reports_reasons`;
-
-
 CREATE TABLE `##DBNAME##_reports_reasons` (
   `reason_id` smallint(4) unsigned NOT NULL auto_increment,
   `reason_title` varchar(255) collate utf8_bin NOT NULL default '',
   `reason_description` mediumtext collate utf8_bin NOT NULL,
   `reason_order` smallint(4) unsigned NOT NULL default '0',
   PRIMARY KEY  (`reason_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_reports_reasons`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_reports_reasons` VALUES (1,'warez','The post contains links to illegal or pirated software.',1),
 (2,'spam','The reported post has the only purpose to advertise for a website or another product.',2),
 (3,'off_topic','The reported post is off topic.',3),
 (4,'other','The reported post does not fit into any other category, please use the further information field.',4);
 
-
-
---
--- Table structure for table `##DBNAME##_search_results`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_search_results`;
-
-
 CREATE TABLE `##DBNAME##_search_results` (
   `search_key` varchar(32) collate utf8_bin NOT NULL default '',
   `search_time` int(11) unsigned NOT NULL default '0',
   `search_keywords` mediumtext collate utf8_bin NOT NULL,
   `search_authors` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`search_key`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_search_results`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_search_wordlist`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_search_wordlist`;
-
-
 CREATE TABLE `##DBNAME##_search_wordlist` (
   `word_id` mediumint(8) unsigned NOT NULL auto_increment,
   `word_text` varchar(255) collate utf8_bin NOT NULL default '',
   `word_common` tinyint(1) unsigned NOT NULL default '0',
   `word_count` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`word_id`),
-
   UNIQUE KEY `wrd_txt` (`word_text`),
-
   KEY `wrd_cnt` (`word_count`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_search_wordlist`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_search_wordlist` VALUES (1,'this',0,1),
 (2,'example',0,1),
@@ -2436,32 +1821,15 @@ INSERT INTO `##DBNAME##_search_wordlist` VALUES (1,'this',0,1),
 (57,'fun',0,1),
 (58,'welcome',0,1);
 
-
-
---
--- Table structure for table `##DBNAME##_search_wordmatch`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_search_wordmatch`;
-
-
 CREATE TABLE `##DBNAME##_search_wordmatch` (
   `post_id` mediumint(8) unsigned NOT NULL default '0',
   `word_id` mediumint(8) unsigned NOT NULL default '0',
   `title_match` tinyint(1) unsigned NOT NULL default '0',
   UNIQUE KEY `unq_mtch` (`word_id`,`post_id`,`title_match`),
-
   KEY `word_id` (`word_id`),
-
   KEY `post_id` (`post_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_search_wordmatch`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_search_wordmatch` VALUES (1,1,0),
 (1,2,0),
@@ -2523,15 +1891,7 @@ INSERT INTO `##DBNAME##_search_wordmatch` VALUES (1,1,0),
 (1,57,0),
 (1,58,1);
 
-
-
---
--- Table structure for table `##DBNAME##_sessions`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_sessions`;
-
-
 CREATE TABLE `##DBNAME##_sessions` (
   `session_id` char(32) collate utf8_bin NOT NULL default '',
   `session_user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2547,85 +1907,34 @@ CREATE TABLE `##DBNAME##_sessions` (
   `session_autologin` tinyint(1) unsigned NOT NULL default '0',
   `session_admin` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`session_id`),
-
   KEY `session_time` (`session_time`),
-
   KEY `session_user_id` (`session_user_id`),
-
   KEY `session_fid` (`session_forum_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_sessions`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_sessions` VALUES ('f40c33a5bef967134139903b92227764',1,0,1252075881,1252075881,1252075881,'::1','Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.8) Gecko/2009033100 Ubuntu/9.04 (jaunty) Firefox/3.0.8','','install/index.php?mode=install&sub=final',1,0,0),
 ('8eb0e937bd4ab785093d0c1037d6d1b5',2,0,1252075881,1252075881,1252075891,'::1','Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.8) Gecko/2009033100 Ubuntu/9.04 (jaunty) Firefox/3.0.8','','adm/index.php',1,0,1);
 
-
-
---
--- Table structure for table `##DBNAME##_sessions_keys`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_sessions_keys`;
-
-
 CREATE TABLE `##DBNAME##_sessions_keys` (
   `key_id` char(32) collate utf8_bin NOT NULL default '',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `last_ip` varchar(40) collate utf8_bin NOT NULL default '',
   `last_login` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`key_id`,`user_id`),
-
   KEY `last_login` (`last_login`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_sessions_keys`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_sitelist`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_sitelist`;
-
-
 CREATE TABLE `##DBNAME##_sitelist` (
   `site_id` mediumint(8) unsigned NOT NULL auto_increment,
   `site_ip` varchar(40) collate utf8_bin NOT NULL default '',
   `site_hostname` varchar(255) collate utf8_bin NOT NULL default '',
   `ip_exclude` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`site_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_sitelist`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_smilies`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_smilies`;
-
-
 CREATE TABLE `##DBNAME##_smilies` (
   `smiley_id` mediumint(8) unsigned NOT NULL auto_increment,
   `code` varchar(50) collate utf8_bin NOT NULL default '',
@@ -2636,16 +1945,8 @@ CREATE TABLE `##DBNAME##_smilies` (
   `smiley_order` mediumint(8) unsigned NOT NULL default '0',
   `display_on_posting` tinyint(1) unsigned NOT NULL default '1',
   PRIMARY KEY  (`smiley_id`),
-
   KEY `display_on_post` (`display_on_posting`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_smilies`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_smilies` VALUES (1,':D','Very Happy','icon_e_biggrin.gif',15,17,1,1),
 (2,':-D','Very Happy','icon_e_biggrin.gif',15,17,2,1),
@@ -2690,15 +1991,7 @@ INSERT INTO `##DBNAME##_smilies` VALUES (1,':D','Very Happy','icon_e_biggrin.gif
 (41,':geek:','Geek','icon_e_geek.gif',17,17,41,1),
 (42,':ugeek:','Uber Geek','icon_e_ugeek.gif',17,18,42,1);
 
-
-
---
--- Table structure for table `##DBNAME##_styles`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_styles`;
-
-
 CREATE TABLE `##DBNAME##_styles` (
   `style_id` mediumint(8) unsigned NOT NULL auto_increment,
   `style_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2708,62 +2001,27 @@ CREATE TABLE `##DBNAME##_styles` (
   `theme_id` mediumint(8) unsigned NOT NULL default '0',
   `imageset_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`style_id`),
-
   UNIQUE KEY `style_name` (`style_name`),
-
   KEY `template_id` (`template_id`),
-
   KEY `theme_id` (`theme_id`),
-
   KEY `imageset_id` (`imageset_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_styles`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_styles` VALUES (1,'prosilver','&copy; phpBB Group',1,1,1,1);
 
-
-
---
--- Table structure for table `##DBNAME##_styles_imageset`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_styles_imageset`;
-
-
 CREATE TABLE `##DBNAME##_styles_imageset` (
   `imageset_id` mediumint(8) unsigned NOT NULL auto_increment,
   `imageset_name` varchar(255) collate utf8_bin NOT NULL default '',
   `imageset_copyright` varchar(255) collate utf8_bin NOT NULL default '',
   `imageset_path` varchar(100) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`imageset_id`),
-
   UNIQUE KEY `imgset_nm` (`imageset_name`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_styles_imageset`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_styles_imageset` VALUES (1,'prosilver','&copy; phpBB Group','prosilver');
 
-
-
---
--- Table structure for table `##DBNAME##_styles_imageset_data`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_styles_imageset_data`;
-
-
 CREATE TABLE `##DBNAME##_styles_imageset_data` (
   `image_id` mediumint(8) unsigned NOT NULL auto_increment,
   `image_name` varchar(200) collate utf8_bin NOT NULL default '',
@@ -2773,16 +2031,8 @@ CREATE TABLE `##DBNAME##_styles_imageset_data` (
   `image_width` smallint(4) unsigned NOT NULL default '0',
   `imageset_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`image_id`),
-
   KEY `i_d` (`imageset_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_styles_imageset_data`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_styles_imageset_data` VALUES (1,'site_logo','site_logo.gif','',52,139,1),
 (2,'forum_link','forum_link.gif','',27,27,1),
@@ -2863,15 +2113,7 @@ INSERT INTO `##DBNAME##_styles_imageset_data` VALUES (1,'site_logo','site_logo.g
 (77,'button_topic_new','button_topic_new.gif','en',25,96,1),
 (78,'button_topic_reply','button_topic_reply.gif','en',25,96,1);
 
-
-
---
--- Table structure for table `##DBNAME##_styles_template`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_styles_template`;
-
-
 CREATE TABLE `##DBNAME##_styles_template` (
   `template_id` mediumint(8) unsigned NOT NULL auto_increment,
   `template_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2882,28 +2124,12 @@ CREATE TABLE `##DBNAME##_styles_template` (
   `template_inherits_id` int(4) unsigned NOT NULL default '0',
   `template_inherit_path` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`template_id`),
-
   UNIQUE KEY `tmplte_nm` (`template_name`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_styles_template`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_styles_template` VALUES (1,'prosilver','&copy; phpBB Group','prosilver','lNg=',0,0,'');
 
-
-
---
--- Table structure for table `##DBNAME##_styles_template_data`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_styles_template_data`;
-
-
 CREATE TABLE `##DBNAME##_styles_template_data` (
   `template_id` mediumint(8) unsigned NOT NULL default '0',
   `template_filename` varchar(100) collate utf8_bin NOT NULL default '',
@@ -2911,27 +2137,10 @@ CREATE TABLE `##DBNAME##_styles_template_data` (
   `template_mtime` int(11) unsigned NOT NULL default '0',
   `template_data` mediumtext collate utf8_bin NOT NULL,
   KEY `tid` (`template_id`),
-
   KEY `tfn` (`template_filename`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_styles_template_data`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_styles_theme`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_styles_theme`;
-
-
 CREATE TABLE `##DBNAME##_styles_theme` (
   `theme_id` mediumint(8) unsigned NOT NULL auto_increment,
   `theme_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2941,28 +2150,12 @@ CREATE TABLE `##DBNAME##_styles_theme` (
   `theme_mtime` int(11) unsigned NOT NULL default '0',
   `theme_data` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`theme_id`),
-
   UNIQUE KEY `theme_name` (`theme_name`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_styles_theme`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_styles_theme` VALUES (1,'prosilver','&copy; phpBB Group','prosilver',1,0,'');
 
-
-
---
--- Table structure for table `##DBNAME##_topics`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_topics`;
-
-
 CREATE TABLE `##DBNAME##_topics` (
   `topic_id` mediumint(8) unsigned NOT NULL auto_increment,
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2999,136 +2192,56 @@ CREATE TABLE `##DBNAME##_topics` (
   `poll_last_vote` int(11) unsigned NOT NULL default '0',
   `poll_vote_change` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`topic_id`),
-
   KEY `forum_id` (`forum_id`),
-
   KEY `forum_id_type` (`forum_id`,`topic_type`),
-
   KEY `last_post_time` (`topic_last_post_time`),
-
   KEY `topic_approved` (`topic_approved`),
-
   KEY `forum_appr_last` (`forum_id`,`topic_approved`,`topic_last_post_id`),
-
   KEY `fid_time_moved` (`forum_id`,`topic_last_post_time`,`topic_moved_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_topics`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_topics` VALUES (1,2,0,0,1,0,'Welcome to phpBB3',2,1252075878,0,0,0,0,0,0,1,'replaceusername','AA0000',1,2,'replaceusername','AA0000','Welcome to phpBB3',1252075878,972086460,0,0,0,'',0,0,1,0,0);
 
-
-
---
--- Table structure for table `##DBNAME##_topics_posted`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_topics_posted`;
-
-
 CREATE TABLE `##DBNAME##_topics_posted` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `topic_posted` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`topic_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_topics_posted`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_topics_posted` VALUES (2,1,1);
 
-
-
---
--- Table structure for table `##DBNAME##_topics_track`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_topics_track`;
-
-
 CREATE TABLE `##DBNAME##_topics_track` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `mark_time` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`topic_id`),
-
   KEY `forum_id` (`forum_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_topics_track`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_topics_watch`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_topics_watch`;
-
-
 CREATE TABLE `##DBNAME##_topics_watch` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `notify_status` tinyint(1) unsigned NOT NULL default '0',
   KEY `topic_id` (`topic_id`),
-
   KEY `user_id` (`user_id`),
-
   KEY `notify_stat` (`notify_status`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_topics_watch`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_user_group`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_user_group`;
-
-
 CREATE TABLE `##DBNAME##_user_group` (
   `group_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `group_leader` tinyint(1) unsigned NOT NULL default '0',
   `user_pending` tinyint(1) unsigned NOT NULL default '1',
   KEY `group_id` (`group_id`),
-
   KEY `user_id` (`user_id`),
-
   KEY `group_leader` (`group_leader`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_user_group`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_user_group` VALUES (1,1,0,0),
 (2,2,0,0),
@@ -3185,15 +2298,7 @@ INSERT INTO `##DBNAME##_user_group` VALUES (1,1,0,0),
 (6,51,0,0),
 (6,52,0,0);
 
-
-
---
--- Table structure for table `##DBNAME##_users`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_users`;
-
-
 CREATE TABLE `##DBNAME##_users` (
   `user_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_type` tinyint(2) NOT NULL default '0',
@@ -3269,22 +2374,11 @@ CREATE TABLE `##DBNAME##_users` (
   `user_newpasswd` varchar(40) collate utf8_bin NOT NULL default '',
   `user_form_salt` varchar(32) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`user_id`),
-
   UNIQUE KEY `username_clean` (`username_clean`),
-
   KEY `user_birthday` (`user_birthday`),
-
   KEY `user_email_hash` (`user_email_hash`),
-
   KEY `user_type` (`user_type`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_users`
---
-
-
+) ENGINE=MyISAM ;
 
 INSERT INTO `##DBNAME##_users` VALUES (1,2,1,'',0,'',1252075878,'Anonymous','anonymous','',0,0,'',0,'',0,0,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'d M Y H:i',1,0,'',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','9ac03816784b8612'),
 (2,3,5,'zik0zjzik0zjzik0w0\ni1cjyo000000\nzik0zjzhb2tc',0,'::1',1252075878,'##USERNAME##','##USERNAME_MINI##','##PASSWORD##',0,0,'##EMAIL##',-171855108320,'',0,0,0,'','',0,0,0,0,0,0,1,'en','0.00',0,'D M d, Y g:i a',1,1,'AA0000',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,1,895,'',0,0,0,'','','','','','','','','','','','','','','0fc1edba092e6c67'),
@@ -3339,15 +2433,7 @@ INSERT INTO `##DBNAME##_users` VALUES (1,2,1,'',0,'',1252075878,'Anonymous','ano
 (51,2,6,'',0,'',1252075881,'Yahoo [Bot]','yahoo [bot]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','0f0b9ab6f8516c2f'),
 (52,2,6,'',0,'',1252075881,'YahooSeeker [Bot]','yahooseeker [bot]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','41e0a3f6e6280750');
 
-
-
---
--- Table structure for table `##DBNAME##_warnings`
---
-
 DROP TABLE IF EXISTS `##DBNAME##_warnings`;
-
-
 CREATE TABLE `##DBNAME##_warnings` (
   `warning_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -3355,66 +2441,22 @@ CREATE TABLE `##DBNAME##_warnings` (
   `log_id` mediumint(8) unsigned NOT NULL default '0',
   `warning_time` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`warning_id`)
-) ENGINE=MyISAM;
+) ENGINE=MyISAM ;
 
-
---
--- Dumping data for table `##DBNAME##_warnings`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_words`
---
 
 DROP TABLE IF EXISTS `##DBNAME##_words`;
-
-
 CREATE TABLE `##DBNAME##_words` (
   `word_id` mediumint(8) unsigned NOT NULL auto_increment,
   `word` varchar(255) collate utf8_bin NOT NULL default '',
   `replacement` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`word_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_words`
---
-
-
-
-
-
-
---
--- Table structure for table `##DBNAME##_zebra`
---
+) ENGINE=MyISAM ;
 
 DROP TABLE IF EXISTS `##DBNAME##_zebra`;
-
-
 CREATE TABLE `##DBNAME##_zebra` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `zebra_id` mediumint(8) unsigned NOT NULL default '0',
   `friend` tinyint(1) unsigned NOT NULL default '0',
   `foe` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`zebra_id`)
-) ENGINE=MyISAM;
-
-
---
--- Dumping data for table `##DBNAME##_zebra`
---
-
-
-
-
-
-
--- Dump completed on 2009-09-04 20:05:13
-
+) ENGINE=MyISAM ;
