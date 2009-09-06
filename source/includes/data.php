@@ -13,7 +13,7 @@
 
 	$mfhclass = new stdClass;
 
-	ini_set("display_errors"  , 1); 
+	ini_set("display_errors"  , 0); 
 	ini_set("register_globals", 0);
 	ini_set("memory_limit"    , -1);
 	//ini_set("post_max_size" , -1);
@@ -39,7 +39,7 @@
 	$mfhclass->input->file_vars    = $mfhclass->funcs->clean_array($_FILES);
 	$mfhclass->input->cookie_vars  = $mfhclass->funcs->clean_array($_COOKIE);
 
-	$mfhclass->info->phpbb_version = "3.0.5";
+	$mfhclass->info->phpbb_version = "3.0.0";
 	$mfhclass->info->site_url      = $mfhclass->funcs->fetch_url(false, false, false);
 	$mfhclass->info->page_url      = $mfhclass->funcs->fetch_url(true, false, true);
 	$mfhclass->info->script_path   = ((dirname($mfhclass->input->server_vars['php_self']) != "/") ? (dirname($mfhclass->input->server_vars['php_self'])."/") : dirname($mfhclass->input->server_vars['php_self']));
