@@ -29,7 +29,7 @@
 			</dl>
 			<dl>
 			<dt><label for=\"sql_database\">MySQL Database Name:</label><br /><span class=\"explain\">This will be the database that all information related to NasuTek Multi Forum Host will be stored in. Once installed more databases can be added to enlarge storage capabilities for hosted forums. </span></dt>
-			<dd><input id=\"sql_database\" type=\"text\" size=\"25\" name=\"sql_database\" value=\"mmfh3x\" /></dd>
+			<dd><input id=\"sql_database\" type=\"text\" size=\"25\" name=\"sql_database\" value=\"mfh4x\" /></dd>
 			</dl>
 			<dl>
 			<dt><label for=\"sql_username\">MySQL Username:</label></dt>

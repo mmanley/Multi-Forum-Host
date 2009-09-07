@@ -93,14 +93,8 @@
 				$mfhclass->templ->error("Sorry but the requested access name is already in use.");
 			} elseif ($mfhclass->db->total_rows($mfhclass->db->query("SELECT * FROM `mfh_forum_databases` WHERE `allow_signups` = 1 ORDER BY RAND() LIMIT 1;")) < 1) {
 				$mfhclass->templ->error("Sorry but signups are disabled.");
-			} else {
-				if (!mkdir("{$mfhclass->info->root_path}phpBB3/files/{$mfhclass->input->post_vars['access_name']}/", 0777)) {
-					$mfhclass->templ->error("Failed to create upload folder <b>{$mfhclass->info->root_path}phpBB3/files/{$mfhclass->input->post_vars['access_name']}/</b>.");
-				}
-				
+			} else {		
 				$database_info = $mfhclass->db->fetch_array($mfhclass->db->query("SELECT * FROM `mfh_forum_databases` WHERE `allow_signups` = 1 ORDER BY RAND() LIMIT 1;"));
-				
-				$mfhclass->db->query("INSERT INTO `mfh_hosted_forums` (`database_id`, `access_name`, `time_started`, `total_hits`, `category_id`, `ip_address`, `email_address`) VALUES ('{$database_info['database_id']}', '{$mfhclass->input->post_vars['access_name']}', ".time().", 1, {$mfhclass->input->post_vars['forum_category']}, '{$mfhclass->input->server_vars['ip_address']}', '{$mfhclass->input->post_vars['email_address']}');");
 
 				$replacevalues = array(	"DBNAME" => $mfhclass->input->post_vars['access_name'],
 							"EMAIL" => $mfhclass->input->post_vars['email_address'],
@@ -109,8 +103,8 @@
 							"SITE_NAME" => $mfhclass->input->post_vars['forum_name'],
 							"UPLOAD_PATH" => $mfhclass->input->post_vars['access_name'],
 							"USERNAME" => $mfhclass->input->post_vars['username'],
-							"USERNAME_MINI" => $mfhclass->input->post_vars['username'],
-							"PASSWORD" => md5($mfhclass->input->post_vars['password']));
+							"USERNAME_MINI" => strtolower($mfhclass->input->post_vars['username']),
+							"PASSWORD" => $mfhclass->passwordfuncs->HashPassword($mfhclass->input->post_vars['password']));
 
 				$myFile = "{$mfhclass->info->root_path}/sql/phpbb-{$mfhclass->info->phpbb_version}.sql";
 				$fh = fopen($myFile, 'r');
@@ -127,8 +121,18 @@
 				$sqlscript = str_replace("##USERNAME_MINI##", $replacevalues["USERNAME_MINI"], $sqlscript);
 				$sqlscript = str_replace("##PASSWORD##", $replacevalues["PASSWORD"], $sqlscript);
 
-				$mfhclass->db->query($sqlscript, $database_info['database_id']);
+				$sqlarray = explode("(EOL)", $sqlscript);
 
+				for ($i = 0; $i < count($sqlarray) - 1; $i++) {
+					$mfhclass->db->query($sqlarray[$i], $database_info['database_id']);
+				}
+
+				if (!mkdir("{$mfhclass->info->root_path}phpBB3/files/{$mfhclass->input->post_vars['access_name']}/", 0777)) {
+					$mfhclass->templ->error("Failed to create upload folder <b>{$mfhclass->info->root_path}phpBB3/files/{$mfhclass->input->post_vars['access_name']}/</b>.");
+				}
+
+				$mfhclass->db->query("INSERT INTO `mfh_hosted_forums` (`database_id`, `access_name`, `time_started`, `total_hits`, `category_id`, `ip_address`, `email_address`) VALUES ('{$database_info['database_id']}', '{$mfhclass->input->post_vars['access_name']}', ".time().", 1, {$mfhclass->input->post_vars['forum_category']}, '{$mfhclass->input->server_vars['ip_address']}', '{$mfhclass->input->post_vars['email_address']}');");
+				
 				$mfhclass->templ->html = "<h1>Forum Created</h1><br />
 				<p>Congratulations, your new forum has been successfully created. Below are some details related to 
 				your new phpBB powered forum and how to access it.

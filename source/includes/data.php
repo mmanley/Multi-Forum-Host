@@ -14,7 +14,7 @@
 
 	$mfhclass = new stdClass;
 
-	ini_set("display_errors"  , 0); 
+	ini_set("display_errors"  , 1); 
 	ini_set("register_globals", 0);
 	ini_set("memory_limit"    , -1);
 	//ini_set("post_max_size" , -1);
@@ -29,10 +29,12 @@
 	require_once "{$mfhclass->info->root_path}source/includes/functions.php";
 	require_once "{$mfhclass->info->root_path}source/includes/database.php";
 	require_once "{$mfhclass->info->root_path}source/includes/template.php";
-	
+	require_once "{$mfhclass->info->root_path}source/includes/passwordhash.php";
+
 	$mfhclass->db    = new mfh_mysql_driver();
 	$mfhclass->templ = new mfh_template_engine();
 	$mfhclass->funcs = new mfh_core_functions();
+	$mfhclass->passwordfuncs = new mfh_passwordfuncts(8, TRUE);
 
 	$mfhclass->input->get_vars     = $mfhclass->funcs->clean_array($_GET);
 	$mfhclass->input->post_vars    = $mfhclass->funcs->clean_array($_POST);

@@ -1,4 +1,4 @@
-DROP TABLE IF EXISTS `##DBNAME##_acl_groups`;
+DROP TABLE IF EXISTS `##DBNAME##_acl_groups`;(EOL)
 CREATE TABLE `##DBNAME##_acl_groups` (
   `group_id` mediumint(8) unsigned NOT NULL default '0',
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
@@ -8,7 +8,7 @@ CREATE TABLE `##DBNAME##_acl_groups` (
   KEY `group_id` (`group_id`),
   KEY `auth_opt_id` (`auth_option_id`),
   KEY `auth_role_id` (`auth_role_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_acl_groups` VALUES (1,0,85,0,1),
 (1,0,93,0,1),
@@ -29,9 +29,9 @@ INSERT INTO `##DBNAME##_acl_groups` VALUES (1,0,85,0,1),
 (4,2,0,21,0),
 (5,2,0,14,0),
 (5,2,0,10,0),
-(6,2,0,19,0);
+(6,2,0,19,0);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_acl_options`;
+DROP TABLE IF EXISTS `##DBNAME##_acl_options`;(EOL)
 CREATE TABLE `##DBNAME##_acl_options` (
   `auth_option_id` mediumint(8) unsigned NOT NULL auto_increment,
   `auth_option` varchar(50) collate utf8_bin NOT NULL default '',
@@ -40,7 +40,7 @@ CREATE TABLE `##DBNAME##_acl_options` (
   `founder_only` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`auth_option_id`),
   UNIQUE KEY `auth_option` (`auth_option`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 --
 -- Dumping data for table `##DBNAME##_acl_options`
@@ -162,9 +162,9 @@ INSERT INTO `##DBNAME##_acl_options` VALUES (1,'f_',0,1,0),
 (114,'u_sendpm',1,0,0),
 (115,'u_sig',1,0,0),
 (116,'u_viewonline',1,0,0),
-(117,'u_viewprofile',1,0,0);
+(117,'u_viewprofile',1,0,0);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_acl_roles`;
+DROP TABLE IF EXISTS `##DBNAME##_acl_roles`;(EOL)
 CREATE TABLE `##DBNAME##_acl_roles` (
   `role_id` mediumint(8) unsigned NOT NULL auto_increment,
   `role_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -174,7 +174,7 @@ CREATE TABLE `##DBNAME##_acl_roles` (
   PRIMARY KEY  (`role_id`),
   KEY `role_type` (`role_type`),
   KEY `role_order` (`role_order`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_acl_roles` VALUES (1,'ROLE_ADMIN_STANDARD','ROLE_DESCRIPTION_ADMIN_STANDARD','a_',1),
 (2,'ROLE_ADMIN_FORUM','ROLE_DESCRIPTION_ADMIN_FORUM','a_',3),
@@ -197,16 +197,16 @@ INSERT INTO `##DBNAME##_acl_roles` VALUES (1,'ROLE_ADMIN_STANDARD','ROLE_DESCRIP
 (19,'ROLE_FORUM_BOT','ROLE_DESCRIPTION_FORUM_BOT','f_',9),
 (20,'ROLE_FORUM_ONQUEUE','ROLE_DESCRIPTION_FORUM_ONQUEUE','f_',8),
 (21,'ROLE_FORUM_POLLS','ROLE_DESCRIPTION_FORUM_POLLS','f_',6),
-(22,'ROLE_FORUM_LIMITED_POLLS','ROLE_DESCRIPTION_FORUM_LIMITED_POLLS','f_',4);
+(22,'ROLE_FORUM_LIMITED_POLLS','ROLE_DESCRIPTION_FORUM_LIMITED_POLLS','f_',4);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_acl_roles_data`;
+DROP TABLE IF EXISTS `##DBNAME##_acl_roles_data`;(EOL)
 CREATE TABLE `##DBNAME##_acl_roles_data` (
   `role_id` mediumint(8) unsigned NOT NULL default '0',
   `auth_option_id` mediumint(8) unsigned NOT NULL default '0',
   `auth_setting` tinyint(2) NOT NULL default '0',
   PRIMARY KEY  (`role_id`,`auth_option_id`),
   KEY `ath_op_id` (`auth_option_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_acl_roles_data` VALUES (1,44,1),
 (1,46,1),
@@ -595,9 +595,9 @@ INSERT INTO `##DBNAME##_acl_roles_data` VALUES (1,44,1),
 (22,24,1),
 (22,25,1),
 (22,27,1),
-(22,29,1);
+(22,29,1);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_acl_users`;
+DROP TABLE IF EXISTS `##DBNAME##_acl_users`;(EOL)
 CREATE TABLE `##DBNAME##_acl_users` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
@@ -607,11 +607,11 @@ CREATE TABLE `##DBNAME##_acl_users` (
   KEY `user_id` (`user_id`),
   KEY `auth_option_id` (`auth_option_id`),
   KEY `auth_role_id` (`auth_role_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-INSERT INTO `##DBNAME##_acl_users` VALUES (2,0,0,5,0);
+INSERT INTO `##DBNAME##_acl_users` VALUES (2,0,0,5,0);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_attachments`;
+DROP TABLE IF EXISTS `##DBNAME##_attachments`;(EOL)
 CREATE TABLE `##DBNAME##_attachments` (
   `attach_id` mediumint(8) unsigned NOT NULL auto_increment,
   `post_msg_id` mediumint(8) unsigned NOT NULL default '0',
@@ -634,9 +634,9 @@ CREATE TABLE `##DBNAME##_attachments` (
   KEY `topic_id` (`topic_id`),
   KEY `poster_id` (`poster_id`),
   KEY `is_orphan` (`is_orphan`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_banlist`;
+DROP TABLE IF EXISTS `##DBNAME##_banlist`;(EOL)
 CREATE TABLE `##DBNAME##_banlist` (
   `ban_id` mediumint(8) unsigned NOT NULL auto_increment,
   `ban_userid` mediumint(8) unsigned NOT NULL default '0',
@@ -652,9 +652,9 @@ CREATE TABLE `##DBNAME##_banlist` (
   KEY `ban_user` (`ban_userid`,`ban_exclude`),
   KEY `ban_email` (`ban_email`,`ban_exclude`),
   KEY `ban_ip` (`ban_ip`,`ban_exclude`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_bbcodes`;
+DROP TABLE IF EXISTS `##DBNAME##_bbcodes`;(EOL)
 CREATE TABLE `##DBNAME##_bbcodes` (
   `bbcode_id` tinyint(3) NOT NULL default '0',
   `bbcode_tag` varchar(16) collate utf8_bin NOT NULL default '',
@@ -668,16 +668,16 @@ CREATE TABLE `##DBNAME##_bbcodes` (
   `second_pass_replace` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`bbcode_id`),
   KEY `display_on_post` (`display_on_posting`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_bookmarks`;
+DROP TABLE IF EXISTS `##DBNAME##_bookmarks`;(EOL)
 CREATE TABLE `##DBNAME##_bookmarks` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`topic_id`,`user_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_bots`;
+DROP TABLE IF EXISTS `##DBNAME##_bots`;(EOL)
 CREATE TABLE `##DBNAME##_bots` (
   `bot_id` mediumint(8) unsigned NOT NULL auto_increment,
   `bot_active` tinyint(1) unsigned NOT NULL default '1',
@@ -687,7 +687,7 @@ CREATE TABLE `##DBNAME##_bots` (
   `bot_ip` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`bot_id`),
   KEY `bot_active` (`bot_active`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_bots` VALUES (1,1,'AdsBot [Google]',3,'AdsBot-Google',''),
 (2,1,'Alexa [Bot]',4,'ia_archiver',''),
@@ -738,16 +738,16 @@ INSERT INTO `##DBNAME##_bots` VALUES (1,1,'AdsBot [Google]',3,'AdsBot-Google',''
 (47,1,'Yahoo MMCrawler [Bot]',49,'Yahoo-MMCrawler/',''),
 (48,1,'Yahoo Slurp [Bot]',50,'Yahoo! DE Slurp',''),
 (49,1,'Yahoo [Bot]',51,'Yahoo! Slurp',''),
-(50,1,'YahooSeeker [Bot]',52,'YahooSeeker/','');
+(50,1,'YahooSeeker [Bot]',52,'YahooSeeker/','');(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_config`;
+DROP TABLE IF EXISTS `##DBNAME##_config`;(EOL)
 CREATE TABLE `##DBNAME##_config` (
   `config_name` varchar(255) collate utf8_bin NOT NULL default '',
   `config_value` varchar(255) collate utf8_bin NOT NULL default '',
   `is_dynamic` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`config_name`),
   KEY `is_dynamic` (`is_dynamic`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_config` VALUES ('active_sessions','0',0),
 ('allow_attachments','1',0),
@@ -990,7 +990,7 @@ INSERT INTO `##DBNAME##_config` VALUES ('active_sessions','0',0),
 ('upload_dir_size','0',1),
 ('warnings_last_gc','0',1),
 ('board_startdate','1252075878',0),
-('default_lang','en',0);
+('default_lang','en',0);(EOL)
 
 
 
@@ -998,7 +998,7 @@ INSERT INTO `##DBNAME##_config` VALUES ('active_sessions','0',0),
 -- Table structure for table `##DBNAME##_confirm`
 --
 
-DROP TABLE IF EXISTS `##DBNAME##_confirm`;
+DROP TABLE IF EXISTS `##DBNAME##_confirm`;(EOL)
 
 
 CREATE TABLE `##DBNAME##_confirm` (
@@ -1009,16 +1009,16 @@ CREATE TABLE `##DBNAME##_confirm` (
   `seed` int(10) unsigned NOT NULL default '0',
   PRIMARY KEY  (`session_id`,`confirm_id`),
   KEY `confirm_type` (`confirm_type`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_disallow`;
+DROP TABLE IF EXISTS `##DBNAME##_disallow`;(EOL)
 CREATE TABLE `##DBNAME##_disallow` (
   `disallow_id` mediumint(8) unsigned NOT NULL auto_increment,
   `disallow_username` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`disallow_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_drafts`;
+DROP TABLE IF EXISTS `##DBNAME##_drafts`;(EOL)
 CREATE TABLE `##DBNAME##_drafts` (
   `draft_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1029,9 +1029,9 @@ CREATE TABLE `##DBNAME##_drafts` (
   `draft_message` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`draft_id`),
   KEY `save_time` (`save_time`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_extension_groups`;
+DROP TABLE IF EXISTS `##DBNAME##_extension_groups`;(EOL)
 CREATE TABLE `##DBNAME##_extension_groups` (
   `group_id` mediumint(8) unsigned NOT NULL auto_increment,
   `group_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -1043,7 +1043,7 @@ CREATE TABLE `##DBNAME##_extension_groups` (
   `allowed_forums` text collate utf8_bin NOT NULL,
   `allow_in_pm` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`group_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_extension_groups` VALUES (1,'Images',1,1,1,'',0,'',0),
 (2,'Archives',0,1,1,'',0,'',0),
@@ -1053,15 +1053,15 @@ INSERT INTO `##DBNAME##_extension_groups` VALUES (1,'Images',1,1,1,'',0,'',0),
 (6,'Windows Media',2,0,1,'',0,'',0),
 (7,'Flash Files',5,0,1,'',0,'',0),
 (8,'Quicktime Media',6,0,1,'',0,'',0),
-(9,'Downloadable Files',0,0,1,'',0,'',0);
+(9,'Downloadable Files',0,0,1,'',0,'',0);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_extensions`;
+DROP TABLE IF EXISTS `##DBNAME##_extensions`;(EOL)
 CREATE TABLE `##DBNAME##_extensions` (
   `extension_id` mediumint(8) unsigned NOT NULL auto_increment,
   `group_id` mediumint(8) unsigned NOT NULL default '0',
   `extension` varchar(100) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`extension_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_extensions` VALUES (1,1,'gif'),
 (2,1,'png'),
@@ -1128,9 +1128,9 @@ INSERT INTO `##DBNAME##_extensions` VALUES (1,1,'gif'),
 (63,9,'mpg'),
 (64,9,'mp3'),
 (65,9,'ogg'),
-(66,9,'ogm');
+(66,9,'ogm');(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_forums`;
+DROP TABLE IF EXISTS `##DBNAME##_forums`;(EOL)
 CREATE TABLE `##DBNAME##_forums` (
   `forum_id` mediumint(8) unsigned NOT NULL auto_increment,
   `parent_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1176,28 +1176,28 @@ CREATE TABLE `##DBNAME##_forums` (
   PRIMARY KEY  (`forum_id`),
   KEY `left_right_id` (`left_id`,`right_id`),
   KEY `forum_lastpost_id` (`forum_last_post_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_forums` VALUES (1,0,1,4,'','Your first category','','',7,'','','',0,'','','','',7,'',0,0,0,1,1,1,1,2,'',1252075878,'replaceusername','AA0000',32,1,1,1,1,0,0,0,0,0),
-(2,1,2,3,'','Your first forum','Description of your first forum.','',7,'','','',0,'','','','',7,'',0,1,0,1,1,1,1,2,'Welcome to phpBB3',1252075878,'replaceusername','AA0000',32,1,1,1,1,0,0,0,0,0);
+(2,1,2,3,'','Your first forum','Description of your first forum.','',7,'','','',0,'','','','',7,'',0,1,0,1,1,1,1,2,'Welcome to phpBB3',1252075878,'replaceusername','AA0000',32,1,1,1,1,0,0,0,0,0);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_forums_access`;
+DROP TABLE IF EXISTS `##DBNAME##_forums_access`;(EOL)
 CREATE TABLE `##DBNAME##_forums_access` (
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `session_id` char(32) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`forum_id`,`user_id`,`session_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_forums_track`;
+DROP TABLE IF EXISTS `##DBNAME##_forums_track`;(EOL)
 CREATE TABLE `##DBNAME##_forums_track` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `mark_time` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`forum_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_forums_watch`;
+DROP TABLE IF EXISTS `##DBNAME##_forums_watch`;(EOL)
 CREATE TABLE `##DBNAME##_forums_watch` (
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1205,9 +1205,9 @@ CREATE TABLE `##DBNAME##_forums_watch` (
   KEY `forum_id` (`forum_id`),
   KEY `user_id` (`user_id`),
   KEY `notify_stat` (`notify_status`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_groups`;
+DROP TABLE IF EXISTS `##DBNAME##_groups`;(EOL)
 CREATE TABLE `##DBNAME##_groups` (
   `group_id` mediumint(8) unsigned NOT NULL auto_increment,
   `group_type` tinyint(4) NOT NULL default '1',
@@ -1231,16 +1231,16 @@ CREATE TABLE `##DBNAME##_groups` (
   `group_legend` tinyint(1) unsigned NOT NULL default '1',
   PRIMARY KEY  (`group_id`),
   KEY `group_legend_name` (`group_legend`,`group_name`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_groups` VALUES (1,3,0,'GUESTS','','',7,'',0,'',0,0,0,0,'',0,0,0,5,0),
 (2,3,0,'REGISTERED','','',7,'',0,'',0,0,0,0,'',0,0,0,5,0),
 (3,3,0,'REGISTERED_COPPA','','',7,'',0,'',0,0,0,0,'',0,0,0,5,0),
 (4,3,0,'GLOBAL_MODERATORS','','',7,'',0,'',0,0,0,0,'00AA00',0,0,0,0,1),
 (5,3,1,'ADMINISTRATORS','','',7,'',0,'',0,0,0,0,'AA0000',0,0,0,0,1),
-(6,3,0,'BOTS','','',7,'',0,'',0,0,0,0,'9E8DA7',0,0,0,5,0);
+(6,3,0,'BOTS','','',7,'',0,'',0,0,0,0,'9E8DA7',0,0,0,5,0);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_icons`;
+DROP TABLE IF EXISTS `##DBNAME##_icons`;(EOL)
 CREATE TABLE `##DBNAME##_icons` (
   `icons_id` mediumint(8) unsigned NOT NULL auto_increment,
   `icons_url` varchar(255) collate utf8_bin NOT NULL default '',
@@ -1250,7 +1250,7 @@ CREATE TABLE `##DBNAME##_icons` (
   `display_on_posting` tinyint(1) unsigned NOT NULL default '1',
   PRIMARY KEY  (`icons_id`),
   KEY `display_on_posting` (`display_on_posting`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_icons` VALUES (1,'misc/fire.gif',16,16,1,1),
 (2,'smile/redface.gif',16,16,9,1),
@@ -1261,9 +1261,9 @@ INSERT INTO `##DBNAME##_icons` VALUES (1,'misc/fire.gif',16,16,1,1),
 (7,'misc/thinking.gif',16,16,5,1),
 (8,'smile/info.gif',16,16,8,1),
 (9,'smile/question.gif',16,16,6,1),
-(10,'smile/alert.gif',16,16,7,1);
+(10,'smile/alert.gif',16,16,7,1);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_lang`;
+DROP TABLE IF EXISTS `##DBNAME##_lang`;(EOL)
 CREATE TABLE `##DBNAME##_lang` (
   `lang_id` tinyint(4) NOT NULL auto_increment,
   `lang_iso` varchar(30) collate utf8_bin NOT NULL default '',
@@ -1273,11 +1273,11 @@ CREATE TABLE `##DBNAME##_lang` (
   `lang_author` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`lang_id`),
   KEY `lang_iso` (`lang_iso`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-INSERT INTO `##DBNAME##_lang` VALUES (1,'en','en','British English','British English','phpBB Group');
+INSERT INTO `##DBNAME##_lang` VALUES (1,'en','en','British English','British English','phpBB Group');(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_log`;
+DROP TABLE IF EXISTS `##DBNAME##_log`;(EOL)
 CREATE TABLE `##DBNAME##_log` (
   `log_id` mediumint(8) unsigned NOT NULL auto_increment,
   `log_type` tinyint(4) NOT NULL default '0',
@@ -1295,12 +1295,12 @@ CREATE TABLE `##DBNAME##_log` (
   KEY `topic_id` (`topic_id`),
   KEY `reportee_id` (`reportee_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_log` VALUES (1,2,2,0,0,0,'::1',1252075881,'LOG_ERROR_EMAIL','a:1:{i:0;s:91:\"<strong>EMAIL/PHP/mail()</strong><br /><em>/phpBB3/install/index.php</em><br /><br /><br />\";}'),
-(2,0,2,0,0,0,'::1',1252075881,'LOG_INSTALL_INSTALLED','a:1:{i:0;s:5:\"3.0.5\";}');
+(2,0,2,0,0,0,'::1',1252075881,'LOG_INSTALL_INSTALLED','a:1:{i:0;s:5:\"3.0.5\";}');(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_moderator_cache`;
+DROP TABLE IF EXISTS `##DBNAME##_moderator_cache`;(EOL)
 CREATE TABLE `##DBNAME##_moderator_cache` (
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1310,9 +1310,9 @@ CREATE TABLE `##DBNAME##_moderator_cache` (
   `display_on_index` tinyint(1) unsigned NOT NULL default '1',
   KEY `disp_idx` (`display_on_index`),
   KEY `forum_id` (`forum_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_modules`;
+DROP TABLE IF EXISTS `##DBNAME##_modules`;(EOL)
 CREATE TABLE `##DBNAME##_modules` (
   `module_id` mediumint(8) unsigned NOT NULL auto_increment,
   `module_enabled` tinyint(1) unsigned NOT NULL default '1',
@@ -1329,7 +1329,7 @@ CREATE TABLE `##DBNAME##_modules` (
   KEY `left_right_id` (`left_id`,`right_id`),
   KEY `module_enabled` (`module_enabled`),
   KEY `class_left_id` (`module_class`,`left_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_modules` VALUES (1,1,1,'','acp',0,1,60,'ACP_CAT_GENERAL','',''),
 (2,1,1,'','acp',1,4,17,'ACP_QUICK_ACCESS','',''),
@@ -1519,9 +1519,9 @@ INSERT INTO `##DBNAME##_modules` VALUES (1,1,1,'','acp',0,1,60,'ACP_CAT_GENERAL'
 (186,1,1,'profile','ucp',164,18,19,'UCP_PROFILE_AVATAR','avatar',''),
 (187,1,1,'profile','ucp',164,20,21,'UCP_PROFILE_REG_DETAILS','reg_details',''),
 (188,1,1,'zebra','ucp',168,50,51,'UCP_ZEBRA_FRIENDS','friends',''),
-(189,1,1,'zebra','ucp',168,52,53,'UCP_ZEBRA_FOES','foes','');
+(189,1,1,'zebra','ucp',168,52,53,'UCP_ZEBRA_FOES','foes','');(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_poll_options`;
+DROP TABLE IF EXISTS `##DBNAME##_poll_options`;(EOL)
 CREATE TABLE `##DBNAME##_poll_options` (
   `poll_option_id` tinyint(4) NOT NULL default '0',
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1529,9 +1529,9 @@ CREATE TABLE `##DBNAME##_poll_options` (
   `poll_option_total` mediumint(8) unsigned NOT NULL default '0',
   KEY `poll_opt_id` (`poll_option_id`),
   KEY `topic_id` (`topic_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_poll_votes`;
+DROP TABLE IF EXISTS `##DBNAME##_poll_votes`;(EOL)
 CREATE TABLE `##DBNAME##_poll_votes` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `poll_option_id` tinyint(4) NOT NULL default '0',
@@ -1540,9 +1540,9 @@ CREATE TABLE `##DBNAME##_poll_votes` (
   KEY `topic_id` (`topic_id`),
   KEY `vote_user_id` (`vote_user_id`),
   KEY `vote_user_ip` (`vote_user_ip`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_posts`;
+DROP TABLE IF EXISTS `##DBNAME##_posts`;(EOL)
 CREATE TABLE `##DBNAME##_posts` (
   `post_id` mediumint(8) unsigned NOT NULL auto_increment,
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1577,11 +1577,11 @@ CREATE TABLE `##DBNAME##_posts` (
   KEY `poster_id` (`poster_id`),
   KEY `post_approved` (`post_approved`),
   KEY `tid_post_time` (`topic_id`,`post_time`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-INSERT INTO `##DBNAME##_posts` VALUES (1,1,2,2,0,'::1',1252075878,1,0,1,1,1,1,'','Welcome to phpBB3','This is an example post in your phpBB3 installation. Everything seems to be working. You may delete this post if you like and continue to set up your board. During the installation process your first category and your first forum are assigned an appropriate set of permissions for the predefined usergroups administrators, bots, global moderators, guests, registered users and registered COPPA users. If you also choose to delete your first category and your first forum, do not forget to assign permissions for all these usergroups for all new categories and forums you create. It is recommended to rename your first category and your first forum and copy permissions from these while creating new categories and forums. Have fun!','5dd683b17f641daf84c040bfefc58ce9',0,'','',1,0,'',0,0,0);
+INSERT INTO `##DBNAME##_posts` VALUES (1,1,2,2,0,'::1',1252075878,1,0,1,1,1,1,'','Welcome to phpBB3','This is an example post in your phpBB3 installation. Everything seems to be working. You may delete this post if you like and continue to set up your board. During the installation process your first category and your first forum are assigned an appropriate set of permissions for the predefined usergroups administrators, bots, global moderators, guests, registered users and registered COPPA users. If you also choose to delete your first category and your first forum, do not forget to assign permissions for all these usergroups for all new categories and forums you create. It is recommended to rename your first category and your first forum and copy permissions from these while creating new categories and forums. Have fun!','5dd683b17f641daf84c040bfefc58ce9',0,'','',1,0,'',0,0,0);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_privmsgs`;
+DROP TABLE IF EXISTS `##DBNAME##_privmsgs`;(EOL)
 CREATE TABLE `##DBNAME##_privmsgs` (
   `msg_id` mediumint(8) unsigned NOT NULL auto_increment,
   `root_level` mediumint(8) unsigned NOT NULL default '0',
@@ -1609,9 +1609,9 @@ CREATE TABLE `##DBNAME##_privmsgs` (
   KEY `message_time` (`message_time`),
   KEY `author_id` (`author_id`),
   KEY `root_level` (`root_level`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_privmsgs_folder`;
+DROP TABLE IF EXISTS `##DBNAME##_privmsgs_folder`;(EOL)
 CREATE TABLE `##DBNAME##_privmsgs_folder` (
   `folder_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1619,9 +1619,9 @@ CREATE TABLE `##DBNAME##_privmsgs_folder` (
   `pm_count` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`folder_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_privmsgs_rules`;
+DROP TABLE IF EXISTS `##DBNAME##_privmsgs_rules`;(EOL)
 CREATE TABLE `##DBNAME##_privmsgs_rules` (
   `rule_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1634,9 +1634,9 @@ CREATE TABLE `##DBNAME##_privmsgs_rules` (
   `rule_folder_id` int(11) NOT NULL default '0',
   PRIMARY KEY  (`rule_id`),
   KEY `user_id` (`user_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_privmsgs_to`;
+DROP TABLE IF EXISTS `##DBNAME##_privmsgs_to`;(EOL)
 CREATE TABLE `##DBNAME##_privmsgs_to` (
   `msg_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1651,9 +1651,9 @@ CREATE TABLE `##DBNAME##_privmsgs_to` (
   KEY `msg_id` (`msg_id`),
   KEY `author_id` (`author_id`),
   KEY `usr_flder_id` (`user_id`,`folder_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_profile_fields`;
+DROP TABLE IF EXISTS `##DBNAME##_profile_fields`;(EOL)
 CREATE TABLE `##DBNAME##_profile_fields` (
   `field_id` mediumint(8) unsigned NOT NULL auto_increment,
   `field_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -1675,15 +1675,15 @@ CREATE TABLE `##DBNAME##_profile_fields` (
   PRIMARY KEY  (`field_id`),
   KEY `fld_type` (`field_type`),
   KEY `fld_ordr` (`field_order`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_profile_fields_data`;
+DROP TABLE IF EXISTS `##DBNAME##_profile_fields_data`;(EOL)
 CREATE TABLE `##DBNAME##_profile_fields_data` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_profile_fields_lang`;
+DROP TABLE IF EXISTS `##DBNAME##_profile_fields_lang`;(EOL)
 CREATE TABLE `##DBNAME##_profile_fields_lang` (
   `field_id` mediumint(8) unsigned NOT NULL default '0',
   `lang_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1691,9 +1691,9 @@ CREATE TABLE `##DBNAME##_profile_fields_lang` (
   `field_type` tinyint(4) NOT NULL default '0',
   `lang_value` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`field_id`,`lang_id`,`option_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_profile_lang`;
+DROP TABLE IF EXISTS `##DBNAME##_profile_lang`;(EOL)
 CREATE TABLE `##DBNAME##_profile_lang` (
   `field_id` mediumint(8) unsigned NOT NULL default '0',
   `lang_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1701,9 +1701,9 @@ CREATE TABLE `##DBNAME##_profile_lang` (
   `lang_explain` text collate utf8_bin NOT NULL,
   `lang_default_value` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`field_id`,`lang_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_ranks`;
+DROP TABLE IF EXISTS `##DBNAME##_ranks`;(EOL)
 CREATE TABLE `##DBNAME##_ranks` (
   `rank_id` mediumint(8) unsigned NOT NULL auto_increment,
   `rank_title` varchar(255) collate utf8_bin NOT NULL default '',
@@ -1711,11 +1711,11 @@ CREATE TABLE `##DBNAME##_ranks` (
   `rank_special` tinyint(1) unsigned NOT NULL default '0',
   `rank_image` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`rank_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-INSERT INTO `##DBNAME##_ranks` VALUES (1,'Site Admin',0,1,'');
+INSERT INTO `##DBNAME##_ranks` VALUES (1,'Site Admin',0,1,'');(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_reports`;
+DROP TABLE IF EXISTS `##DBNAME##_reports`;(EOL)
 CREATE TABLE `##DBNAME##_reports` (
   `report_id` mediumint(8) unsigned NOT NULL auto_increment,
   `reason_id` smallint(4) unsigned NOT NULL default '0',
@@ -1726,32 +1726,32 @@ CREATE TABLE `##DBNAME##_reports` (
   `report_time` int(11) unsigned NOT NULL default '0',
   `report_text` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`report_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_reports_reasons`;
+DROP TABLE IF EXISTS `##DBNAME##_reports_reasons`;(EOL)
 CREATE TABLE `##DBNAME##_reports_reasons` (
   `reason_id` smallint(4) unsigned NOT NULL auto_increment,
   `reason_title` varchar(255) collate utf8_bin NOT NULL default '',
   `reason_description` mediumtext collate utf8_bin NOT NULL,
   `reason_order` smallint(4) unsigned NOT NULL default '0',
   PRIMARY KEY  (`reason_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_reports_reasons` VALUES (1,'warez','The post contains links to illegal or pirated software.',1),
 (2,'spam','The reported post has the only purpose to advertise for a website or another product.',2),
 (3,'off_topic','The reported post is off topic.',3),
-(4,'other','The reported post does not fit into any other category, please use the further information field.',4);
+(4,'other','The reported post does not fit into any other category, please use the further information field.',4);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_search_results`;
+DROP TABLE IF EXISTS `##DBNAME##_search_results`;(EOL)
 CREATE TABLE `##DBNAME##_search_results` (
   `search_key` varchar(32) collate utf8_bin NOT NULL default '',
   `search_time` int(11) unsigned NOT NULL default '0',
   `search_keywords` mediumtext collate utf8_bin NOT NULL,
   `search_authors` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`search_key`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_search_wordlist`;
+DROP TABLE IF EXISTS `##DBNAME##_search_wordlist`;(EOL)
 CREATE TABLE `##DBNAME##_search_wordlist` (
   `word_id` mediumint(8) unsigned NOT NULL auto_increment,
   `word_text` varchar(255) collate utf8_bin NOT NULL default '',
@@ -1760,7 +1760,7 @@ CREATE TABLE `##DBNAME##_search_wordlist` (
   PRIMARY KEY  (`word_id`),
   UNIQUE KEY `wrd_txt` (`word_text`),
   KEY `wrd_cnt` (`word_count`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_search_wordlist` VALUES (1,'this',0,1),
 (2,'example',0,1),
@@ -1819,9 +1819,9 @@ INSERT INTO `##DBNAME##_search_wordlist` VALUES (1,'this',0,1),
 (55,'creating',0,1),
 (56,'have',0,1),
 (57,'fun',0,1),
-(58,'welcome',0,1);
+(58,'welcome',0,1);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_search_wordmatch`;
+DROP TABLE IF EXISTS `##DBNAME##_search_wordmatch`;(EOL)
 CREATE TABLE `##DBNAME##_search_wordmatch` (
   `post_id` mediumint(8) unsigned NOT NULL default '0',
   `word_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1829,7 +1829,7 @@ CREATE TABLE `##DBNAME##_search_wordmatch` (
   UNIQUE KEY `unq_mtch` (`word_id`,`post_id`,`title_match`),
   KEY `word_id` (`word_id`),
   KEY `post_id` (`post_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_search_wordmatch` VALUES (1,1,0),
 (1,2,0),
@@ -1889,9 +1889,9 @@ INSERT INTO `##DBNAME##_search_wordmatch` VALUES (1,1,0),
 (1,55,0),
 (1,56,0),
 (1,57,0),
-(1,58,1);
+(1,58,1);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_sessions`;
+DROP TABLE IF EXISTS `##DBNAME##_sessions`;(EOL)
 CREATE TABLE `##DBNAME##_sessions` (
   `session_id` char(32) collate utf8_bin NOT NULL default '',
   `session_user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1910,12 +1910,12 @@ CREATE TABLE `##DBNAME##_sessions` (
   KEY `session_time` (`session_time`),
   KEY `session_user_id` (`session_user_id`),
   KEY `session_fid` (`session_forum_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_sessions` VALUES ('f40c33a5bef967134139903b92227764',1,0,1252075881,1252075881,1252075881,'::1','Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.8) Gecko/2009033100 Ubuntu/9.04 (jaunty) Firefox/3.0.8','','install/index.php?mode=install&sub=final',1,0,0),
-('8eb0e937bd4ab785093d0c1037d6d1b5',2,0,1252075881,1252075881,1252075891,'::1','Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.8) Gecko/2009033100 Ubuntu/9.04 (jaunty) Firefox/3.0.8','','adm/index.php',1,0,1);
+('8eb0e937bd4ab785093d0c1037d6d1b5',2,0,1252075881,1252075881,1252075891,'::1','Mozilla/5.0 (X11; U; Linux i686; en-US; rv:1.9.0.8) Gecko/2009033100 Ubuntu/9.04 (jaunty) Firefox/3.0.8','','adm/index.php',1,0,1);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_sessions_keys`;
+DROP TABLE IF EXISTS `##DBNAME##_sessions_keys`;(EOL)
 CREATE TABLE `##DBNAME##_sessions_keys` (
   `key_id` char(32) collate utf8_bin NOT NULL default '',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -1923,18 +1923,18 @@ CREATE TABLE `##DBNAME##_sessions_keys` (
   `last_login` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`key_id`,`user_id`),
   KEY `last_login` (`last_login`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_sitelist`;
+DROP TABLE IF EXISTS `##DBNAME##_sitelist`;(EOL)
 CREATE TABLE `##DBNAME##_sitelist` (
   `site_id` mediumint(8) unsigned NOT NULL auto_increment,
   `site_ip` varchar(40) collate utf8_bin NOT NULL default '',
   `site_hostname` varchar(255) collate utf8_bin NOT NULL default '',
   `ip_exclude` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`site_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_smilies`;
+DROP TABLE IF EXISTS `##DBNAME##_smilies`;(EOL)
 CREATE TABLE `##DBNAME##_smilies` (
   `smiley_id` mediumint(8) unsigned NOT NULL auto_increment,
   `code` varchar(50) collate utf8_bin NOT NULL default '',
@@ -1946,7 +1946,7 @@ CREATE TABLE `##DBNAME##_smilies` (
   `display_on_posting` tinyint(1) unsigned NOT NULL default '1',
   PRIMARY KEY  (`smiley_id`),
   KEY `display_on_post` (`display_on_posting`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_smilies` VALUES (1,':D','Very Happy','icon_e_biggrin.gif',15,17,1,1),
 (2,':-D','Very Happy','icon_e_biggrin.gif',15,17,2,1),
@@ -1989,9 +1989,9 @@ INSERT INTO `##DBNAME##_smilies` VALUES (1,':D','Very Happy','icon_e_biggrin.gif
 (39,':-|','Neutral','icon_neutral.gif',15,17,39,1),
 (40,':mrgreen:','Mr. Green','icon_mrgreen.gif',15,17,40,1),
 (41,':geek:','Geek','icon_e_geek.gif',17,17,41,1),
-(42,':ugeek:','Uber Geek','icon_e_ugeek.gif',17,18,42,1);
+(42,':ugeek:','Uber Geek','icon_e_ugeek.gif',17,18,42,1);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_styles`;
+DROP TABLE IF EXISTS `##DBNAME##_styles`;(EOL)
 CREATE TABLE `##DBNAME##_styles` (
   `style_id` mediumint(8) unsigned NOT NULL auto_increment,
   `style_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2005,11 +2005,11 @@ CREATE TABLE `##DBNAME##_styles` (
   KEY `template_id` (`template_id`),
   KEY `theme_id` (`theme_id`),
   KEY `imageset_id` (`imageset_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-INSERT INTO `##DBNAME##_styles` VALUES (1,'prosilver','&copy; phpBB Group',1,1,1,1);
+INSERT INTO `##DBNAME##_styles` VALUES (1,'prosilver','&copy; phpBB Group',1,1,1,1);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_styles_imageset`;
+DROP TABLE IF EXISTS `##DBNAME##_styles_imageset`;(EOL)
 CREATE TABLE `##DBNAME##_styles_imageset` (
   `imageset_id` mediumint(8) unsigned NOT NULL auto_increment,
   `imageset_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2017,11 +2017,11 @@ CREATE TABLE `##DBNAME##_styles_imageset` (
   `imageset_path` varchar(100) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`imageset_id`),
   UNIQUE KEY `imgset_nm` (`imageset_name`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-INSERT INTO `##DBNAME##_styles_imageset` VALUES (1,'prosilver','&copy; phpBB Group','prosilver');
+INSERT INTO `##DBNAME##_styles_imageset` VALUES (1,'prosilver','&copy; phpBB Group','prosilver');(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_styles_imageset_data`;
+DROP TABLE IF EXISTS `##DBNAME##_styles_imageset_data`;(EOL)
 CREATE TABLE `##DBNAME##_styles_imageset_data` (
   `image_id` mediumint(8) unsigned NOT NULL auto_increment,
   `image_name` varchar(200) collate utf8_bin NOT NULL default '',
@@ -2032,7 +2032,7 @@ CREATE TABLE `##DBNAME##_styles_imageset_data` (
   `imageset_id` mediumint(8) unsigned NOT NULL default '0',
   PRIMARY KEY  (`image_id`),
   KEY `i_d` (`imageset_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_styles_imageset_data` VALUES (1,'site_logo','site_logo.gif','',52,139,1),
 (2,'forum_link','forum_link.gif','',27,27,1),
@@ -2111,9 +2111,9 @@ INSERT INTO `##DBNAME##_styles_imageset_data` VALUES (1,'site_logo','site_logo.g
 (75,'button_pm_reply','button_pm_reply.gif','en',25,96,1),
 (76,'button_topic_locked','button_topic_locked.gif','en',25,88,1),
 (77,'button_topic_new','button_topic_new.gif','en',25,96,1),
-(78,'button_topic_reply','button_topic_reply.gif','en',25,96,1);
+(78,'button_topic_reply','button_topic_reply.gif','en',25,96,1);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_styles_template`;
+DROP TABLE IF EXISTS `##DBNAME##_styles_template`;(EOL)
 CREATE TABLE `##DBNAME##_styles_template` (
   `template_id` mediumint(8) unsigned NOT NULL auto_increment,
   `template_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2125,11 +2125,11 @@ CREATE TABLE `##DBNAME##_styles_template` (
   `template_inherit_path` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`template_id`),
   UNIQUE KEY `tmplte_nm` (`template_name`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-INSERT INTO `##DBNAME##_styles_template` VALUES (1,'prosilver','&copy; phpBB Group','prosilver','lNg=',0,0,'');
+INSERT INTO `##DBNAME##_styles_template` VALUES (1,'prosilver','&copy; phpBB Group','prosilver','lNg=',0,0,'');(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_styles_template_data`;
+DROP TABLE IF EXISTS `##DBNAME##_styles_template_data`;(EOL)
 CREATE TABLE `##DBNAME##_styles_template_data` (
   `template_id` mediumint(8) unsigned NOT NULL default '0',
   `template_filename` varchar(100) collate utf8_bin NOT NULL default '',
@@ -2138,9 +2138,9 @@ CREATE TABLE `##DBNAME##_styles_template_data` (
   `template_data` mediumtext collate utf8_bin NOT NULL,
   KEY `tid` (`template_id`),
   KEY `tfn` (`template_filename`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_styles_theme`;
+DROP TABLE IF EXISTS `##DBNAME##_styles_theme`;(EOL)
 CREATE TABLE `##DBNAME##_styles_theme` (
   `theme_id` mediumint(8) unsigned NOT NULL auto_increment,
   `theme_name` varchar(255) collate utf8_bin NOT NULL default '',
@@ -2151,11 +2151,11 @@ CREATE TABLE `##DBNAME##_styles_theme` (
   `theme_data` mediumtext collate utf8_bin NOT NULL,
   PRIMARY KEY  (`theme_id`),
   UNIQUE KEY `theme_name` (`theme_name`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-INSERT INTO `##DBNAME##_styles_theme` VALUES (1,'prosilver','&copy; phpBB Group','prosilver',1,0,'');
+INSERT INTO `##DBNAME##_styles_theme` VALUES (1,'prosilver','&copy; phpBB Group','prosilver',1,0,'');(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_topics`;
+DROP TABLE IF EXISTS `##DBNAME##_topics`;(EOL)
 CREATE TABLE `##DBNAME##_topics` (
   `topic_id` mediumint(8) unsigned NOT NULL auto_increment,
   `forum_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2198,21 +2198,21 @@ CREATE TABLE `##DBNAME##_topics` (
   KEY `topic_approved` (`topic_approved`),
   KEY `forum_appr_last` (`forum_id`,`topic_approved`,`topic_last_post_id`),
   KEY `fid_time_moved` (`forum_id`,`topic_last_post_time`,`topic_moved_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-INSERT INTO `##DBNAME##_topics` VALUES (1,2,0,0,1,0,'Welcome to phpBB3',2,1252075878,0,0,0,0,0,0,1,'replaceusername','AA0000',1,2,'replaceusername','AA0000','Welcome to phpBB3',1252075878,972086460,0,0,0,'',0,0,1,0,0);
+INSERT INTO `##DBNAME##_topics` VALUES (1,2,0,0,1,0,'Welcome to phpBB3',2,1252075878,0,0,0,0,0,0,1,'replaceusername','AA0000',1,2,'replaceusername','AA0000','Welcome to phpBB3',1252075878,972086460,0,0,0,'',0,0,1,0,0);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_topics_posted`;
+DROP TABLE IF EXISTS `##DBNAME##_topics_posted`;(EOL)
 CREATE TABLE `##DBNAME##_topics_posted` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `topic_posted` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`topic_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-INSERT INTO `##DBNAME##_topics_posted` VALUES (2,1,1);
+INSERT INTO `##DBNAME##_topics_posted` VALUES (2,1,1);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_topics_track`;
+DROP TABLE IF EXISTS `##DBNAME##_topics_track`;(EOL)
 CREATE TABLE `##DBNAME##_topics_track` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2220,9 +2220,9 @@ CREATE TABLE `##DBNAME##_topics_track` (
   `mark_time` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`topic_id`),
   KEY `forum_id` (`forum_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_topics_watch`;
+DROP TABLE IF EXISTS `##DBNAME##_topics_watch`;(EOL)
 CREATE TABLE `##DBNAME##_topics_watch` (
   `topic_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2230,9 +2230,9 @@ CREATE TABLE `##DBNAME##_topics_watch` (
   KEY `topic_id` (`topic_id`),
   KEY `user_id` (`user_id`),
   KEY `notify_stat` (`notify_status`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_user_group`;
+DROP TABLE IF EXISTS `##DBNAME##_user_group`;(EOL)
 CREATE TABLE `##DBNAME##_user_group` (
   `group_id` mediumint(8) unsigned NOT NULL default '0',
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2241,7 +2241,7 @@ CREATE TABLE `##DBNAME##_user_group` (
   KEY `group_id` (`group_id`),
   KEY `user_id` (`user_id`),
   KEY `group_leader` (`group_leader`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_user_group` VALUES (1,1,0,0),
 (2,2,0,0),
@@ -2296,9 +2296,9 @@ INSERT INTO `##DBNAME##_user_group` VALUES (1,1,0,0),
 (6,49,0,0),
 (6,50,0,0),
 (6,51,0,0),
-(6,52,0,0);
+(6,52,0,0);(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_users`;
+DROP TABLE IF EXISTS `##DBNAME##_users`;(EOL)
 CREATE TABLE `##DBNAME##_users` (
   `user_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_type` tinyint(2) NOT NULL default '0',
@@ -2378,7 +2378,7 @@ CREATE TABLE `##DBNAME##_users` (
   KEY `user_birthday` (`user_birthday`),
   KEY `user_email_hash` (`user_email_hash`),
   KEY `user_type` (`user_type`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 INSERT INTO `##DBNAME##_users` VALUES (1,2,1,'',0,'',1252075878,'Anonymous','anonymous','',0,0,'',0,'',0,0,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'d M Y H:i',1,0,'',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','9ac03816784b8612'),
 (2,3,5,'zik0zjzik0zjzik0w0\ni1cjyo000000\nzik0zjzhb2tc',0,'::1',1252075878,'##USERNAME##','##USERNAME_MINI##','##PASSWORD##',0,0,'##EMAIL##',-171855108320,'',0,0,0,'','',0,0,0,0,0,0,1,'en','0.00',0,'D M d, Y g:i a',1,1,'AA0000',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,1,895,'',0,0,0,'','','','','','','','','','','','','','','0fc1edba092e6c67'),
@@ -2431,9 +2431,9 @@ INSERT INTO `##DBNAME##_users` VALUES (1,2,1,'',0,'',1252075878,'Anonymous','ano
 (49,2,6,'',0,'',1252075881,'Yahoo MMCrawler [Bot]','yahoo mmcrawler [bot]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','08c6010b41654de2'),
 (50,2,6,'',0,'',1252075881,'Yahoo Slurp [Bot]','yahoo slurp [bot]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','f3f4333e6ef07db7'),
 (51,2,6,'',0,'',1252075881,'Yahoo [Bot]','yahoo [bot]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','0f0b9ab6f8516c2f'),
-(52,2,6,'',0,'',1252075881,'YahooSeeker [Bot]','yahooseeker [bot]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','41e0a3f6e6280750');
+(52,2,6,'',0,'',1252075881,'YahooSeeker [Bot]','yahooseeker [bot]','',1252075881,0,'',0,'',0,1252075881,0,'','',0,0,0,0,0,0,0,'en','0.00',0,'D M d, Y g:i a',1,0,'9E8DA7',0,0,0,0,-3,0,0,'t','d',0,'t','a',0,1,0,1,1,1,0,895,'',0,0,0,'','','','','','','','','','','','','','','41e0a3f6e6280750');(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_warnings`;
+DROP TABLE IF EXISTS `##DBNAME##_warnings`;(EOL)
 CREATE TABLE `##DBNAME##_warnings` (
   `warning_id` mediumint(8) unsigned NOT NULL auto_increment,
   `user_id` mediumint(8) unsigned NOT NULL default '0',
@@ -2441,22 +2441,22 @@ CREATE TABLE `##DBNAME##_warnings` (
   `log_id` mediumint(8) unsigned NOT NULL default '0',
   `warning_time` int(11) unsigned NOT NULL default '0',
   PRIMARY KEY  (`warning_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
 
-DROP TABLE IF EXISTS `##DBNAME##_words`;
+DROP TABLE IF EXISTS `##DBNAME##_words`;(EOL)
 CREATE TABLE `##DBNAME##_words` (
   `word_id` mediumint(8) unsigned NOT NULL auto_increment,
   `word` varchar(255) collate utf8_bin NOT NULL default '',
   `replacement` varchar(255) collate utf8_bin NOT NULL default '',
   PRIMARY KEY  (`word_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
 
-DROP TABLE IF EXISTS `##DBNAME##_zebra`;
+DROP TABLE IF EXISTS `##DBNAME##_zebra`;(EOL)
 CREATE TABLE `##DBNAME##_zebra` (
   `user_id` mediumint(8) unsigned NOT NULL default '0',
   `zebra_id` mediumint(8) unsigned NOT NULL default '0',
   `friend` tinyint(1) unsigned NOT NULL default '0',
   `foe` tinyint(1) unsigned NOT NULL default '0',
   PRIMARY KEY  (`user_id`,`zebra_id`)
-) ENGINE=MyISAM ;
+) ENGINE=MyISAM;(EOL)
