@@ -27,7 +27,7 @@
 	
 	<div id="page-footer">
 		<a href="http://www.phpbb.com/">phpBB</a> &copy; 2000, 2002, 2005, 2007 <a href="http://www.phpbb.com/">phpBB Group</a><br />
-		<a href="http://www.NasuTek.org/">NasuTek Multi Forum Host</a> &copy; 2007 <a href="http://www.NasuTek.org/">NasuTek, Inc.</a>
+		<a href="http://www.NasuTek.com/">NasuTek Multi Forum Host</a> &copy; 2009 <a href="http://www.NasuTek.com/">NasuTek Systems</a>
 	</div>
 </div>
 </body>
