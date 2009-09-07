@@ -27,41 +27,28 @@
 		}
 	}
 
-	$mfhclass->templ->page_header = base64_decode("PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgU3Rya
-	WN0Ly9FTiIgImh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXN0cmljdC5kdGQiPgo8aHRtbCB4bWxucz0iaHR0cDovL3d3d
-	y53My5vcmcvMTk5OS94aHRtbCIgZGlyPSJsdHIiIGxhbmc9ImVuLWdiIiB4bWw6bGFuZz0iZW4tZ2IiPgo8aGVhZD4KPG1ldGEgaHR0cC1lcXVpd
-	j0iQ29udGVudC1UeXBlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9VVRGLTgiIC8+CjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtU3R5b
-	GUtVHlwZSIgY29udGVudD0idGV4dC9jc3MiIC8+CjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtTGFuZ3VhZ2UiIGNvbnRlbnQ9ImVuLWdiIiAvP
-	go8bWV0YSBodHRwLWVxdWl2PSJpbWFnZXRvb2xiYXIiIGNvbnRlbnQ9Im5vIiAvPgo8dGl0bGU+QWRtaW5pc3RyYXRpb24gQ29udHJvbCBQYW5lb
-	DwvdGl0bGU+CjxsaW5rIGhyZWY9Ii4vY3NzL3N0eWxlLmNzcyIgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgbWVkaWE9InNjcmVlb
-	iIgLz4KPHNjcmlwdCB0eXBlPSJ0ZXh0L2phdmFzY3JpcHQiIHNyYz0iaHR0cDovL3d3dy5nb29nbGUtYW5hbHl0aWNzLmNvbS91cmNoaW4uanMiP
-	jwvc2NyaXB0Pgo8c2NyaXB0IHR5cGU9InRleHQvamF2YXNjcmlwdCIgc3JjPSIuL3NvdXJjZS9pbmNsdWRlcy9nZW5qc2NyaXB0LmpzIj48L3Njc
-	mlwdD4KPC9oZWFkPgo8Ym9keSBjbGFzcz0ibHRyIj4KPGRpdiBpZD0id3JhcCI+Cgk8ZGl2IGlkPSJwYWdlLWhlYWRlciI+CgkJPGgxPkFkbWlua
-	XN0cmF0aW9uIENvbnRyb2wgUGFuZWw8L2gxPgoJCTxwPjxhIGhyZWY9ImFkbWluLnBocD8iPkFkbWluIENQIEhvbWU8L2E+ICZidWxsOyA8YSBoc
-	mVmPSJpbmRleC5waHAiPlNpdGUgSG9tZTwvYT48L3A+Cgk8L2Rpdj4KCTxkaXYgaWQ9InBhZ2UtYm9keSI+Cgk8ZGl2IGlkPSJhY3AiPgoJPGRpd
-	iBjbGFzcz0icGFuZWwiPgoJCTxzcGFuIGNsYXNzPSJjb3JuZXJzLXRvcCI+PHNwYW4+PC9zcGFuPjwvc3Bhbj4KCQkJPGRpdiBpZD0iY29udGVud
-	CI+CgkJCQk8ZGl2IGlkPSJtZW51Ij4KCQkJCQk8dWw+CgkJCQkJCTxsaT48YSBocmVmPSJhZG1pbi5waHA/YWN0PWlkeCI+PHNwYW4+QWRtaW4gQ
-	1AgSG9tZTwvc3Bhbj48L2E+PC9saT4KCQkJCQkJPGxpPjxhIGhyZWY9ImFkbWluLnBocD9hY3Q9c2l0ZV9zZXR0aW5ncyI+PHNwYW4+RWRpdCBTa
-	XRlIFNldHRpbmdzPC9zcGFuPjwvYT48L2xpPgoJCQkJCQk8bGk+PGEgaHJlZj0iYWRtaW4ucGhwP2FjdD1kYXRhYmFzZSI+PHNwYW4+RGF0YWJhc
-	2UgTWFuYWdlcjwvc3Bhbj48L2E+PC9saT4KCQkJCQkJPGxpPjxhIGhyZWY9ImFkbWluLnBocD9hY3Q9Y2F0ZWdvcmllcyI+PHNwYW4+RGlyZWN0b
-	3J5IENhdGVnb3JpZXMgTWFuYWdlcjwvc3Bhbj48L2E+PGxpPgoJCQkJCQk8bGk+PGEgaHJlZj0iYWRtaW4ucGhwP2FjdD1hZG1pbnMiPjxzcGFuP
-	kFkbWluIEFjY291bnRzIE1hbmFnZXI8L3NwYW4+PC9hPjwvbGk+CgkJCQkJCTxsaT48YSBocmVmPSJhZG1pbi5waHA/YWN0PWxvZ291dCI+PHNwY
-	W4+TG9nb3V0IEFkbWluIENQPC9zcGFuPjwvYT48L2xpPgoJCQkJCTwvdWw+CgkJCQk8L2Rpdj4KCQkJPGRpdiBpZD0ibWFpbiI+CgkJCTwhLS0gT
-	FRFOiAxMTk3Njg1Njk0IC0tPgo=");
+	$mfhclass->templ->page_header = base64_decode("PCFET0NUWVBFIGh0bWwgUFVCTElDICItLy9XM0MvL0RURCBYSFRNTCAxLjAgU3RyaWN0Ly9FTiIg
+		Imh0dHA6Ly93d3cudzMub3JnL1RSL3hodG1sMS9EVEQveGh0bWwxLXN0cmljdC5kdGQiPgo8aHRtbCB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMTk
+		5OS94aHRtbCIgZGlyPSJsdHIiIGxhbmc9ImVuLWdiIiB4bWw6bGFuZz0iZW4tZ2IiPgo8aGVhZD4KPG1ldGEgaHR0cC1lcXVpdj0iQ29udGVudC1UeX
+		BlIiBjb250ZW50PSJ0ZXh0L2h0bWw7IGNoYXJzZXQ9VVRGLTgiIC8+CjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtU3R5bGUtVHlwZSIgY29udGVud
+		D0idGV4dC9jc3MiIC8+CjxtZXRhIGh0dHAtZXF1aXY9IkNvbnRlbnQtTGFuZ3VhZ2UiIGNvbnRlbnQ9ImVuLWdiIiAvPgo8bWV0YSBodHRwLWVxdWl2
+		PSJpbWFnZXRvb2xiYXIiIGNvbnRlbnQ9Im5vIiAvPgo8dGl0bGU+QWRtaW5pc3RyYXRpb24gQ29udHJvbCBQYW5lbDwvdGl0bGU+CjxsaW5rIGhyZWY
+		9Ii4vY3NzL3N0eWxlLmNzcyIgcmVsPSJzdHlsZXNoZWV0IiB0eXBlPSJ0ZXh0L2NzcyIgbWVkaWE9InNjcmVlbiIgLz4KPHNjcmlwdCB0eXBlPSJ0ZX
+		h0L2phdmFzY3JpcHQiIHNyYz0iaHR0cDovL3d3dy5nb29nbGUtYW5hbHl0aWNzLmNvbS91cmNoaW4uanMiPjwvc2NyaXB0Pgo8c2NyaXB0IHR5cGU9I
+		nRleHQvamF2YXNjcmlwdCIgc3JjPSIuL3NvdXJjZS9pbmNsdWRlcy9nZW5qc2NyaXB0LmpzIj48L3NjcmlwdD4KPC9oZWFkPgo8Ym9keSBjbGFzcz0i
+		bHRyIj4KPGRpdiBpZD0id3JhcCI+CgoJPGRpdiBpZD0icGFnZS1oZWFkZXIiPgoJCTxoMT5BZG1pbmlzdHJhdGlvbiBDb250cm9sIFBhbmVsPC9oMT4
+		KCQk8cD48YSBocmVmPSJhZG1pbi5waHA/Ij5BZG1pbiBDUCBIb21lPC9hPiAmYnVsbDsgPGEgaHJlZj0iaW5kZXgucGhwIj5TaXRlIEhvbWU8L2E+PC
+		9wPgoJPC9kaXY+Cgk8ZGl2IGlkPSJwYWdlLWJvZHkiPgoJPGRpdiBpZD0iYWNwIj4KCgk8ZGl2IGNsYXNzPSJwYW5lbCI+CgkJPHNwYW4gY2xhc3M9I
+		mNvcm5lcnMtdG9wIj48c3Bhbj48L3NwYW4+PC9zcGFuPgoJCQk8ZGl2IGlkPSJjb250ZW50Ij4KCQkJCTxkaXYgaWQ9Im1lbnUiPgoJCQkJCTx1bD4K
+		CQkJCQkJPGxpPjxhIGhyZWY9ImFkbWluLnBocD9hY3Q9aWR4Ij48c3Bhbj5BZG1pbiBDUCBIb21lPC9zcGFuPjwvYT48L2xpPgoJCQkJCQk8bGk+PGE
+		gaHJlZj0iYWRtaW4ucGhwP2FjdD1zaXRlX3NldHRpbmdzIj48c3Bhbj5FZGl0IFNpdGUgU2V0dGluZ3M8L3NwYW4+PC9hPjwvbGk+CgkJCQkJCTxsaT
+		48YSBocmVmPSJhZG1pbi5waHA/YWN0PWRhdGFiYXNlIj48c3Bhbj5EYXRhYmFzZSBNYW5hZ2VyPC9zcGFuPjwvYT48L2xpPgoJCQkJCQk8bGk+PGEga
+		HJlZj0iYWRtaW4ucGhwP2FjdD1jYXRlZ29yaWVzIj48c3Bhbj5EaXJlY3RvcnkgQ2F0ZWdvcmllcyBNYW5hZ2VyPC9zcGFuPjwvYT48bGk+CgkJCQkJ
+		CTxsaT48YSBocmVmPSJhZG1pbi5waHA/YWN0PWFkbWlucyI+PHNwYW4+QWRtaW4gQWNjb3VudHMgTWFuYWdlcjwvc3Bhbj48L2E+PC9saT4KCQkJCQk
+		JPGxpPjxhIGhyZWY9ImFkbWluLnBocD9hY3Q9bG9nb3V0Ij48c3Bhbj5Mb2dvdXQgQWRtaW4gQ1A8L3NwYW4+PC9hPjwvbGk+CgkJCQkJCTxsaT48YS
+		BocmVmPSJhZG1pbi5waHA/YWN0PWFib3V0Ij48c3Bhbj5BYm91dCBOYXN1VGVrIE11bHRpIEZvdXJtIEhvc3Q8L3NwYW4+PC9hPjwvbGk+CgkJCQkJP
+		C91bD4KCQkJCTwvZGl2PgoJCQk8ZGl2IGlkPSJtYWluIj4KCQkJPCEtLSBMVEU6IDExOTc2ODU2OTQgLS0+");
 	
-	$mfhclass->templ->page_footer = base64_decode("PC9kaXY+CgkJCQk8L2Rpdj4KCQkJPHNwYW4gY2xhc3M9ImNvcm5lcnMtYm90dG9tI
-	j48c3Bhbj48L3NwYW4+PC9zcGFuPgoJCTwvZGl2PgoJCTwvZGl2PgoJPC9kaXY+CgkKCTwhLS0KCQlXZSByZXF1ZXN0IHlvdSByZXRhaW4gdGhlI
-	GZ1bGwgY29weXJpZ2h0IG5vdGljZSBiZWxvdyBpbmNsdWRpbmcgdGhlIGxpbmsgdG8gd3d3LnBocGJiLmNvbS4KCQlUaGlzIG5vdCBvbmx5IGdpd
-	mVzIHJlc3BlY3QgdG8gdGhlIGxhcmdlIGFtb3VudCBvZiB0aW1lIGdpdmVuIGZyZWVseSBieSB0aGUgZGV2ZWxvcGVycwoJCWJ1dCBhbHNvIGhlb
-	HBzIGJ1aWxkIGludGVyZXN0LCB0cmFmZmljIGFuZCB1c2Ugb2YgcGhwQkIzLiBJZiB5b3UgKGhvbmVzdGx5KSBjYW5ub3QgcmV0YWluCgkJdGhlI
-	GZ1bGwgY29weXJpZ2h0IHdlIGFzayB5b3UgYXQgbGVhc3QgbGVhdmUgaW4gcGxhY2UgdGhlICJQb3dlcmVkIGJ5IHBocEJCIiBsaW5lLCB3aXRoC
-	gkJInBocEJCIiBsaW5rZWQgdG8gd3d3LnBocGJiLmNvbS4gSWYgeW91IHJlZnVzZSB0byBpbmNsdWRlIGV2ZW4gdGhpcyB0aGVuIHN1cHBvcnQgb
-	24gb3VyCgkJZm9ydW1zIG1heSBiZSBhZmZlY3RlZC4KCgkJVGhlIHBocEJCIEdyb3VwIDogMjAwNgoJLy8tLT4KCQoJPGRpdiBpZD0icGFnZS1mb
-	290ZXIiPgoJCTxhIGhyZWY9Imh0dHA6Ly93d3cucGhwYmIuY29tLyI+cGhwQkI8L2E+ICZjb3B5OyAyMDAwLCAyMDAyLCAyMDA1LCAyMDA3IDxhI
-	GhyZWY9Imh0dHA6Ly93d3cucGhwYmIuY29tLyI+cGhwQkIgR3JvdXA8L2E+PGJyIC8+CgkJPGEgaHJlZj0iaHR0cDovL3d3dy5taWhhbGlzbS5jb
-	20vcHJvZHVjdC9tZmgvIj5NaWhhbGlzbSBNdWx0aSBGb3J1bSBIb3N0PC9hPiAmY29weTsgMjAwNyA8YSBocmVmPSJodHRwOi8vd3d3Lm1paGFsa
-	XNtLmNvbS8iPk1paGFsaXNtLCBJbmMuPC9hPgoJPC9kaXY+CjwvZGl2Pgo8L2JvZHk+CjwvaHRtbD4K");
-
 	switch ($mfhclass->input->get_vars['act']) {
 		case "login":
 			$mfhclass->templ->html = "<form method=\"post\" action=\"admin.php?act=login-f\">
@@ -628,6 +615,32 @@
 				$mfhclass->db->query("INSERT INTO `mfh_admin_accounts` (`admin_id`, `username`, `password`, `email_address`, `ip_address`) VALUES ('', '{$mfhclass->input->post_vars['username']}', '".md5($mfhclass->input->post_vars['password'])."', '{$mfhclass->input->post_vars['email_address']}', '{$mfhclass->input->server_vars['remote_addr']}');");
 				$mfhclass->templ->success("Account successfully added.  <br /><br /><a href=\"admin.php?act=admins\">Manage Admin Accounts</a><br /><a href=\"admin.php\">Admin CP Index</a>");
 			}
+			break;
+		case "about":
+			$mfhclass->templ->html = "<h1>About NasuTek Multi Fourm Host</h1>
+			<p>Version: 4.0.0<br/>
+			Copyright &copy; 2009 NasuTek Systems.<br/>
+			Licensed under the BSD Terms and Conditions</p>
+			<p>Redistribution and use in source and binary forms, with or without modification, 
+			are permitted provided that the following conditions are met:<p>
+			<ul>
+			<li>Redistributions of source code must retain the above copyright notice, this list
+			of conditions and the following disclaimer.</li>
+			<li>Redistributions in binary form must reproduce the above copyright notice, this
+			list of conditions and the following disclaimer in the documentation and/or
+			other materials provided with the distribution.</li>
+			<li>Neither NasuTek Systems nor the names of its contributors may be used to endorse 
+			or promote products derived from this software without specific prior written 
+			permission.</li>
+			</ul>
+			<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS \"AS IS\" AND ANY EXPRESS 
+			OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY 
+			AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR 
+			CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL 
+			DAMAGES (INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, 
+			DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, 
+			WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING 
+			IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p>";
 			break;
 		default:
 			$page_links = $mfhclass->templ->pagelinks("admin.php", $mfhclass->db->total_rows($mfhclass->db->query("SELECT * FROM `mfh_hosted_forums` ORDER BY `time_started` DESC;")));

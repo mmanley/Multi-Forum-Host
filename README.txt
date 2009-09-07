@@ -1,5 +1,5 @@
 NasuTek Multi Fourm Host version 4.0.0
-(C) 2007-2009 NasuTek Systems
+(C) 2009 NasuTek Systems
 Licenced under the BSD Licence
 ========================================================================1. Installation
 	Step 1. Once downloaded, unpack the content of the archive to a folder of your choice.

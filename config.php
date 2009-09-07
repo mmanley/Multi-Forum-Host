@@ -1,10 +1,10 @@
 <?php
 	// ======================================== \
-	// Mihalism Multi Forum Host v3.0.x
-	// Copyright (c) 2007 Mihalism, Inc.
-	// Developed by Albino, Craig, and Michael
+	// NasuTek Multi Forum Host v4.0.x
+	// Copyright (c) 2009 NasuTek Systems
 	//
-	// http://www.mihalism.com/product/mfh/
+	// http://nasutek.com/products/php/mfh
+	// Licenced under the BSD Licence
 	// ======================================== /
 
 	$mfh_root_path = ".{$phpbb_root_path}";

@@ -39,13 +39,13 @@
 		}
 		
 		function query($query, $input = NULL, $addon = NULL)
-		{
+		{		
 			if (is_resource($this->root_connection) == false) {
 				$this->connect($this->mfhclass->info->config['sql_host'], $this->mfhclass->info->config['sql_username'], $this->mfhclass->info->config['sql_password'], $this->mfhclass->info->config['sql_database']);
 			}
 			
-			if (strpos($query, "<# QUERY_LIMIT #>") == true) {				
-				$query = str_replace("<# QUERY_LIMIT #>", sprintf("%s, {$this->mfhclass->info->config['max_results']}", (($this->mfhclass->info->current_page * $this->mfhclass->info->config['max_results']) - $this->mfhclass->info->config['max_results'])), $query);
+			if (strpos($query, "<# query limit #>") == true) {				
+				$query = str_replace("<# query limit #>", sprintf("%s, {$this->mfhclass->info->config['max_results']}", (($this->mfhclass->info->current_page * $this->mfhclass->info->config['max_results']) - $this->mfhclass->info->config['max_results'])), $query);
 			}
 			
 			if (is_array($addon) == true && empty($addon) == false) {
