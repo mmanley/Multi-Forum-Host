@@ -1,0 +1,1 @@
+rm -r `find . -name "*~"`
